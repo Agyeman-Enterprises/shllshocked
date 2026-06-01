@@ -151,8 +151,11 @@ ipcMain.handle('get-registry', async () => {
   try {
     if (!fs.existsSync(REGISTRY_PATH)) return { error: `registry.json not found`, commands: [] }
     const parsed = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf-8'))
-    return { commands: Array.isArray(parsed) ? parsed : (parsed.commands || []) }
+    const commands = Array.isArray(parsed) ? parsed : (parsed.commands || [])
+    console.log(`[registry] Loaded ${commands.length} commands from ${REGISTRY_PATH}`)
+    return { commands }
   } catch (err) {
+    console.error(`[registry] Error: ${err.message}`)
     return { error: err.message, commands: [] }
   }
 })

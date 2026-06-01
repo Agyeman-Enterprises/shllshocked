@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function formatTime(date) {
   if (!date) return ''
@@ -16,9 +16,17 @@ const ACTION_SUGGESTIONS = {
 }
 
 export default function OutputPanel({ log, isRunning, onClear, onAction }) {
+  const [isExpanded, setIsExpanded] = useState(true)
+
   if (!log && !isRunning) return null
 
   const actionSuggestion = log && ACTION_SUGGESTIONS[log.psFunction]
+  const output = log?.stdout || log?.stderr || ''
+  const hasLongOutput = output.length > 500
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(output)
+  }
 
   return (
     <div className="output-panel">
@@ -45,6 +53,20 @@ export default function OutputPanel({ log, isRunning, onClear, onAction }) {
                 {actionSuggestion.label}
               </button>
             )}
+            {output && (
+              <button className="output-copy-btn" onClick={copyToClipboard} title="Copy output">
+                Copy
+              </button>
+            )}
+            {hasLongOutput && (
+              <button
+                className="output-expand-btn"
+                onClick={() => setIsExpanded(!isExpanded)}
+                title={isExpanded ? 'Collapse' : 'Expand'}
+              >
+                {isExpanded ? '▼' : '▶'}
+              </button>
+            )}
             <button className="output-clear" onClick={onClear} title="Clear output">
               Clear
             </button>
@@ -52,7 +74,7 @@ export default function OutputPanel({ log, isRunning, onClear, onAction }) {
         )}
       </div>
 
-      {log && !isRunning && (
+      {log && !isRunning && (isExpanded || !hasLongOutput) && (
         <div className="output-body">
           {log.stdout && (
             <pre className="output-stdout">{log.stdout}</pre>

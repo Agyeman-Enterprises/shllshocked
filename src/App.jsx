@@ -62,7 +62,18 @@ export default function App() {
         const admin = await window.shllshockd.checkAdmin()
         setIsAdmin(admin)
       } else {
-        setCommands(SAMPLE_COMMANDS)
+        // Browser dev mode: load registry.json from public folder
+        try {
+          const response = await fetch('/registry.json')
+          if (response.ok) {
+            const data = await response.json()
+            setCommands(data.commands || [])
+          } else {
+            setCommands(SAMPLE_COMMANDS)
+          }
+        } catch {
+          setCommands(SAMPLE_COMMANDS)
+        }
         setPsReady(true)
       }
     }
@@ -170,6 +181,23 @@ export default function App() {
     setShowConfirm(false)
     setSelectedCommand(null)
   }, [])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Ctrl/Cmd+F: focus search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        e.preventDefault()
+        document.querySelector('.search-input')?.focus()
+      }
+      // Escape: close confirmation modal
+      if (e.key === 'Escape' && showConfirm) {
+        handleCancel()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showConfirm, handleCancel])
 
   const handleActionSuggestion = useCallback((psFunction) => {
     const actionCmd = commands.find((c) => c.psFunction === psFunction)

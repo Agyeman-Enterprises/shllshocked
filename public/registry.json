@@ -1,0 +1,4839 @@
+{
+  "version": "1.0.0",
+  "productName": "SHLLSHOCKD",
+  "tagline": "Windows commands for people who have work to do.",
+  "totalCommands": 173,
+  "categories": [
+    "Apps & Bloatware",
+    "Audio",
+    "Display & Appearance",
+    "File & Disk Operations",
+    "File System Secrets",
+    "Gaming & Performance",
+    "Network & WiFi",
+    "Nuclear Options",
+    "Power & Battery",
+    "Printers",
+    "Privacy & Tracking",
+    "Productivity Gems",
+    "Recovery & Repair",
+    "Security",
+    "Speed & Performance",
+    "Startup & Boot",
+    "Storage Recovery",
+    "Symptoms",
+    "Time & Locale"
+  ],
+  "commands": [
+    {
+      "id": "privacy.what_windows_knows",
+      "publicCommand": "Show what Windows knows about me",
+      "aliases": [
+        "what does Microsoft have on me",
+        "show my data",
+        "what is Windows collecting",
+        "what info does Windows store",
+        "show my telemetry",
+        "what is Windows tracking about me",
+        "see my Windows profile"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Displays the personal data, telemetry settings, and diagnostic information Windows has collected or stored about you and your usage habits.",
+      "beforeRunMessage": "Reading your Windows privacy data. Nothing will be changed.",
+      "afterRunMessage": "Here is what Windows has been storing about you. Review the results to decide what you want to turn off.",
+      "psFunction": "what-windows-knows"
+    },
+    {
+      "id": "privacy.stop_sending_data",
+      "publicCommand": "Stop Windows from sending my data to Microsoft",
+      "aliases": [
+        "stop telemetry",
+        "stop spying on me",
+        "disable data collection",
+        "stop Microsoft from tracking me",
+        "turn off diagnostic data",
+        "stop Windows phoning home",
+        "block Microsoft data upload"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Disables telemetry, diagnostic data uploads, and other background reporting that sends your usage data to Microsoft servers.",
+      "beforeRunMessage": "This will disable Windows telemetry and data reporting to Microsoft. Some Microsoft services and Windows Update troubleshooting may be affected.",
+      "afterRunMessage": "Windows telemetry and data reporting have been disabled. Your PC will no longer automatically send usage data to Microsoft.",
+      "psFunction": "stop-sending-my-data"
+    },
+    {
+      "id": "privacy.kill_ad_targeting",
+      "publicCommand": "Disable ad targeting",
+      "aliases": [
+        "stop ads following me",
+        "turn off personalized ads",
+        "stop Windows selling my data to advertisers",
+        "disable advertising ID",
+        "stop tracking me for ads",
+        "turn off ad personalization",
+        "kill the ad ID"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Resets and disables your Windows advertising ID so apps and Microsoft cannot build a profile of you for targeted advertising.",
+      "beforeRunMessage": "This will disable your Windows advertising ID. Apps will no longer be able to serve you personalized ads based on your usage.",
+      "afterRunMessage": "Ad targeting has been disabled. Your advertising ID has been reset and switched off.",
+      "psFunction": "kill-ad-targeting"
+    },
+    {
+      "id": "privacy.stop_location",
+      "publicCommand": "Turn off location tracking",
+      "aliases": [
+        "stop tracking my location",
+        "disable GPS",
+        "turn off location services",
+        "stop Windows knowing where I am",
+        "disable location access",
+        "stop apps tracking my location",
+        "turn off location"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Turns off Windows location services so apps and the operating system cannot determine or log your physical location.",
+      "beforeRunMessage": "This will disable Windows location services. Apps that rely on your location such as Maps and Weather will stop working correctly.",
+      "afterRunMessage": "Location tracking has been disabled. Apps can no longer access your physical location through Windows.",
+      "psFunction": "stop-location-tracking"
+    },
+    {
+      "id": "privacy.see_location_apps",
+      "publicCommand": "See which apps know my location",
+      "aliases": [
+        "which apps track my location",
+        "what apps have location access",
+        "see location permissions",
+        "who knows where I am",
+        "list apps using location",
+        "show location history",
+        "which apps can see where I am"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Lists every app that has been granted permission to access your location, along with when they last used it.",
+      "beforeRunMessage": "Checking which apps have location access. Nothing will be changed.",
+      "afterRunMessage": "Here are all the apps that can see your location. You can revoke access for any app you do not trust.",
+      "psFunction": "see-who-knows-my-location"
+    },
+    {
+      "id": "privacy.see_mic_apps",
+      "publicCommand": "See which apps have used my microphone",
+      "aliases": [
+        "who is using my microphone",
+        "what apps have mic access",
+        "which apps can hear me",
+        "see microphone permissions",
+        "list apps with microphone",
+        "who listened to me",
+        "what apps have been recording audio"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Shows every app that has microphone permission and which ones have recently accessed your microphone.",
+      "beforeRunMessage": "Checking microphone access history. Nothing will be changed.",
+      "afterRunMessage": "Here are all the apps with microphone access. If you see anything unexpected, you can revoke its permission.",
+      "psFunction": "see-who-has-my-mic"
+    },
+    {
+      "id": "privacy.see_camera_apps",
+      "publicCommand": "See which apps have used my camera",
+      "aliases": [
+        "who is using my camera",
+        "what apps have camera access",
+        "which apps can see me",
+        "see camera permissions",
+        "list apps with camera",
+        "who turned on my webcam",
+        "what apps have accessed my webcam"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Shows every app that has camera permission and which ones have recently accessed your webcam or camera.",
+      "beforeRunMessage": "Checking camera access history. Nothing will be changed.",
+      "afterRunMessage": "Here are all the apps with camera access. Review the list and revoke access for anything that should not be watching.",
+      "psFunction": "see-who-has-my-camera"
+    },
+    {
+      "id": "privacy.stop_cortana",
+      "publicCommand": "Stop Cortana from listening and collecting data",
+      "aliases": [
+        "disable Cortana",
+        "turn off Cortana",
+        "stop Cortana spying",
+        "make Cortana stop",
+        "kill Cortana",
+        "stop the Windows assistant",
+        "disable voice assistant tracking"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Disables Cortana's background listening, data collection, and cloud search features so it stops processing your voice and queries.",
+      "beforeRunMessage": "This will disable Cortana's listening and data collection. Cortana voice features and some search integrations will stop working.",
+      "afterRunMessage": "Cortana has been silenced. It is no longer listening or sending your data to Microsoft.",
+      "psFunction": "stop-cortana-listening"
+    },
+    {
+      "id": "privacy.clear_activity",
+      "publicCommand": "Clear my activity history",
+      "aliases": [
+        "delete my history",
+        "wipe my activity",
+        "clear what I have done",
+        "erase Windows timeline",
+        "delete activity log",
+        "remove recent activity",
+        "clear my Windows timeline"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Clears your Windows activity history and Timeline data including apps used, files opened, and websites visited through Edge.",
+      "beforeRunMessage": "This will permanently delete your Windows activity history. Your Timeline and recent activity will be cleared.",
+      "afterRunMessage": "Your activity history has been cleared. Windows no longer has a log of your recent actions.",
+      "psFunction": "clear-activity-history"
+    },
+    {
+      "id": "privacy.stop_typing",
+      "publicCommand": "Stop Windows from collecting my typing data",
+      "aliases": [
+        "stop keystroke collection",
+        "disable typing history",
+        "stop Windows learning my typing",
+        "turn off personalization typing",
+        "stop inking and typing",
+        "disable keystroke logging",
+        "stop Windows watching what I type"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Disables the inking and typing personalization feature that sends samples of what you type to Microsoft to improve autocorrect and suggestions.",
+      "beforeRunMessage": "This will disable Windows typing data collection. Autocomplete suggestions may become less accurate over time.",
+      "afterRunMessage": "Windows will no longer collect your typing data. Keystroke personalization has been disabled.",
+      "psFunction": "stop-typing-collection"
+    },
+    {
+      "id": "privacy.hide_wifi",
+      "publicCommand": "Hide my PC from network discovery",
+      "aliases": [
+        "make my PC invisible on the network",
+        "stop other computers finding me",
+        "hide from network",
+        "turn off network discovery",
+        "make my computer private on WiFi",
+        "stop being visible on local network",
+        "go invisible on WiFi"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Disables network discovery so other computers and devices on the same network cannot see your PC in their file explorer or network browser.",
+      "beforeRunMessage": "This will hide your PC from other devices on the network. File and printer sharing with other computers will also be affected.",
+      "afterRunMessage": "Your PC is now hidden from network discovery. Other devices on the same network can no longer browse to your computer.",
+      "psFunction": "hide-from-wifi-finder"
+    },
+    {
+      "id": "privacy.clear_search",
+      "publicCommand": "Clear Windows search history",
+      "aliases": [
+        "delete search history",
+        "wipe what I searched",
+        "clear recent searches",
+        "erase search suggestions",
+        "remove search autocomplete",
+        "delete Windows search log",
+        "clear the search bar history"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Clears the local and cloud search history that Windows stores, removing autocomplete suggestions and recent search entries from the Start menu search bar.",
+      "beforeRunMessage": "This will clear your Windows search history. Search suggestions based on your past searches will be removed.",
+      "afterRunMessage": "Your Windows search history has been cleared. The search bar will no longer suggest things from your past searches.",
+      "psFunction": "clear-search-history"
+    },
+    {
+      "id": "privacy.kill_widgets",
+      "publicCommand": "Remove the news feed and widgets from my taskbar",
+      "aliases": [
+        "get rid of news on taskbar",
+        "remove widgets",
+        "kill the news feed",
+        "stop news showing up",
+        "remove weather from taskbar",
+        "disable widget board",
+        "get rid of taskbar news"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Removes the widgets panel and news feed from your taskbar, which also stops Microsoft from tracking your news reading habits and interests.",
+      "beforeRunMessage": "This will remove the widgets button and news feed from your taskbar. The widgets panel will no longer appear.",
+      "afterRunMessage": "Widgets and the news feed have been removed from your taskbar. Microsoft can no longer track your reading habits through this feed.",
+      "psFunction": "kill-widget-board"
+    },
+    {
+      "id": "privacy.mute_edge",
+      "publicCommand": "Strip Edge of its tracking and sidebar",
+      "aliases": [
+        "make Edge less annoying",
+        "disable Edge tracking",
+        "remove Edge sidebar",
+        "stop Edge collecting data",
+        "strip Edge bloat",
+        "turn off Edge shopping and tracking",
+        "make Edge just a browser"
+      ],
+      "category": "Privacy & Tracking",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Windows Is Watching",
+      "plainEnglishPurpose": "Disables Edge's shopping assistant, sidebar, tracking features, and telemetry so the browser focuses on browsing rather than collecting your data.",
+      "beforeRunMessage": "This will disable Edge tracking, the sidebar, shopping suggestions, and telemetry. These features will no longer appear in Edge.",
+      "afterRunMessage": "Edge has been stripped down. Tracking, the sidebar, and shopping features have been disabled.",
+      "psFunction": "make-edge-shut-up"
+    },
+    {
+      "id": "speed.make_instant",
+      "publicCommand": "Make Windows feel instant",
+      "aliases": [
+        "speed up Windows",
+        "make my PC faster",
+        "Windows feels slow",
+        "make everything snappier",
+        "speed up animations",
+        "make Windows respond faster",
+        "stop Windows feeling sluggish"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Disables visual animations, adjusts visual effect settings for best performance, and tweaks system responsiveness so Windows feels noticeably snappier.",
+      "beforeRunMessage": "This will disable Windows animations and visual effects. Your PC will look more basic but will respond much faster.",
+      "afterRunMessage": "Windows has been tuned for speed. Animations are off and visual effects are set for best performance.",
+      "psFunction": "make-it-feel-instant"
+    },
+    {
+      "id": "speed.kill_startup",
+      "publicCommand": "Fix slow startup",
+      "aliases": [
+        "Windows takes forever to boot",
+        "slow boot",
+        "why does startup take so long",
+        "PC is slow to start",
+        "boot is too slow",
+        "Windows takes ages to load",
+        "speed up boot time"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Identifies and disables programs that launch automatically at startup and are slowing down your boot time.",
+      "beforeRunMessage": "This will disable startup programs that are slowing your boot. Disabled programs will still be usable — they just will not start automatically.",
+      "afterRunMessage": "Startup programs have been trimmed. Your next boot should be noticeably faster.",
+      "psFunction": "kill-startup-slowdown"
+    },
+    {
+      "id": "speed.stop_background",
+      "publicCommand": "Stop apps running in the background",
+      "aliases": [
+        "apps running when I am not using them",
+        "background apps draining battery",
+        "stop apps I am not using",
+        "kill background processes",
+        "why is my CPU busy when idle",
+        "stop hidden apps",
+        "disable background app activity"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Prevents apps from running in the background when you are not actively using them, freeing up CPU, RAM, and battery.",
+      "beforeRunMessage": "This will prevent apps from running in the background. Notifications and live tile updates from these apps may stop working.",
+      "afterRunMessage": "Background app activity has been restricted. Apps will only run when you are actively using them.",
+      "psFunction": "stop-background-apps"
+    },
+    {
+      "id": "speed.free_ram",
+      "publicCommand": "Free up RAM right now",
+      "aliases": [
+        "my RAM is full",
+        "out of memory",
+        "PC is freezing because of RAM",
+        "release memory",
+        "clear RAM",
+        "flush memory",
+        "free memory now"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Clears the Windows standby memory list and flushes cached data from RAM to immediately free up available memory without rebooting.",
+      "beforeRunMessage": "This will free up RAM by clearing cached data. It is safe and you will not lose any open work.",
+      "afterRunMessage": "RAM has been freed up. Your system should feel more responsive right away.",
+      "psFunction": "free-up-ram-now"
+    },
+    {
+      "id": "speed.find_cpu_hog",
+      "publicCommand": "Find what is maxing out my CPU",
+      "aliases": [
+        "what is using all my CPU",
+        "CPU at 100 percent",
+        "something is eating my processor",
+        "PC running hot for no reason",
+        "CPU usage is crazy",
+        "find the process killing my CPU",
+        "what is maxing out my processor"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Identifies which processes and applications are consuming the most CPU right now and shows you their resource usage over time.",
+      "beforeRunMessage": "Scanning for CPU-hungry processes. Nothing will be changed.",
+      "afterRunMessage": "Here are the processes using the most CPU. You can use this information to decide what to close or disable.",
+      "psFunction": "find-the-cpu-hog"
+    },
+    {
+      "id": "speed.stop_indexing",
+      "publicCommand": "Stop search indexing from slowing my drive",
+      "aliases": [
+        "search indexing is killing my drive",
+        "disk is always busy",
+        "constant disk activity from indexing",
+        "stop search index",
+        "indexing making my PC slow",
+        "turn off search indexing",
+        "stop Windows rebuilding the index"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Disables or limits the Windows Search indexing service that constantly reads and writes to your drive in the background.",
+      "beforeRunMessage": "This will disable Windows Search indexing. File searches from the Start menu may be slower, but your drive will have much less background activity.",
+      "afterRunMessage": "Search indexing has been disabled. Your drive should be quieter and your PC more responsive during idle periods.",
+      "psFunction": "stop-indexing-slowdown"
+    },
+    {
+      "id": "speed.performance_mode",
+      "publicCommand": "Switch to high performance mode",
+      "aliases": [
+        "use high performance power plan",
+        "stop power saving",
+        "give me full power",
+        "max out my CPU",
+        "stop throttling my PC",
+        "disable power saving mode",
+        "full performance power plan"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Switches your power plan to High Performance or Ultimate Performance so Windows stops throttling your CPU and other hardware to save power.",
+      "beforeRunMessage": "This will switch to a high performance power plan. Your PC will run faster but use more electricity. Not recommended for laptops on battery.",
+      "afterRunMessage": "High performance mode is active. Your CPU and hardware are no longer being throttled.",
+      "psFunction": "switch-to-performance-mode"
+    },
+    {
+      "id": "speed.stop_superfetch",
+      "publicCommand": "Stop constant background disk activity",
+      "aliases": [
+        "hard drive is always spinning",
+        "my SSD is constantly working",
+        "stop SysMain",
+        "disable Superfetch",
+        "disk activity when idle",
+        "stop the constant disk noise",
+        "why is my disk always at 100 percent"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Disables the SysMain service (formerly Superfetch) that pre-loads apps into RAM in the background, which can cause constant disk thrashing especially on older drives.",
+      "beforeRunMessage": "This will disable SysMain. App launch pre-loading will stop, but disk activity will decrease significantly. Recommended for HDDs and low-RAM systems.",
+      "afterRunMessage": "SysMain has been disabled. Background disk thrashing should stop. Your drive will be much quieter during idle.",
+      "psFunction": "stop-superfetch-thrash"
+    },
+    {
+      "id": "speed.clean_temp",
+      "publicCommand": "Delete temp files now",
+      "aliases": [
+        "delete temporary files",
+        "clean up junk files",
+        "remove temp folder",
+        "clear Windows temp",
+        "delete cached junk",
+        "clean up disk clutter",
+        "remove temporary windows files"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Deletes temporary files from the Windows temp folders, user temp folder, and prefetch cache that accumulate over time and waste space.",
+      "beforeRunMessage": "This will delete temporary files. Any open apps that are using temp files may be affected. It is safe to run while most apps are closed.",
+      "afterRunMessage": "Temporary files have been deleted. Check how much space was recovered in the results above.",
+      "psFunction": "clean-temp-junk-now"
+    },
+    {
+      "id": "speed.see_ram_hogs",
+      "publicCommand": "Show what is using my RAM",
+      "aliases": [
+        "what is eating my RAM",
+        "memory usage breakdown",
+        "why is my RAM full",
+        "see memory usage",
+        "show RAM consumption",
+        "what programs are using memory",
+        "find RAM heavy apps"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Displays a sorted list of every process and application currently consuming RAM so you can identify what is taking up the most memory.",
+      "beforeRunMessage": "Checking RAM usage across all running processes. Nothing will be changed.",
+      "afterRunMessage": "Here is your RAM breakdown. The biggest consumers are at the top. Consider closing apps you do not need.",
+      "psFunction": "see-ram-hogs"
+    },
+    {
+      "id": "speed.show_startup",
+      "publicCommand": "Show everything that starts with Windows",
+      "aliases": [
+        "what starts with my PC",
+        "list startup programs",
+        "see what loads at boot",
+        "startup programs list",
+        "what launches when Windows starts",
+        "see autostart apps",
+        "show boot programs"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Lists all programs, services, and scheduled tasks that automatically start when Windows boots, including their startup impact rating.",
+      "beforeRunMessage": "Scanning your startup configuration. Nothing will be changed.",
+      "afterRunMessage": "Here is everything that starts with Windows. Use this list to decide what does not need to run on every boot.",
+      "psFunction": "show-startup-apps"
+    },
+    {
+      "id": "speed.pc_speed",
+      "publicCommand": "Check how fast my PC is right now",
+      "aliases": [
+        "benchmark my PC",
+        "how fast is my computer",
+        "PC performance check",
+        "test PC speed",
+        "run a performance test",
+        "measure my computer speed",
+        "how is my PC doing"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Runs a quick performance snapshot showing CPU, RAM, disk, and network speeds alongside current load, so you know how your hardware is actually performing right now.",
+      "beforeRunMessage": "Running a quick performance snapshot. This will take a few seconds and will not change anything.",
+      "afterRunMessage": "Here are your current performance numbers. Compare them against expected speeds for your hardware to spot bottlenecks.",
+      "psFunction": "how-fast-is-my-pc"
+    },
+    {
+      "id": "speed.scheduled_tasks",
+      "publicCommand": "Show what runs automatically on a schedule",
+      "aliases": [
+        "what is Windows running behind my back",
+        "scheduled tasks list",
+        "what runs automatically",
+        "find background scheduled jobs",
+        "what does Windows do on a schedule",
+        "list all scheduled tasks",
+        "find hidden scheduled programs"
+      ],
+      "category": "Speed & Performance",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Lists all Windows scheduled tasks that run automatically at defined times or triggers, including Microsoft and third-party tasks.",
+      "beforeRunMessage": "Retrieving all scheduled tasks. Nothing will be changed.",
+      "afterRunMessage": "Here are all the tasks Windows runs on a schedule. Look for anything unfamiliar or tasks from apps you no longer use.",
+      "psFunction": "show-scheduled-tasks"
+    },
+    {
+      "id": "storage.disk_space",
+      "publicCommand": "Show where my disk space went",
+      "aliases": [
+        "why is my drive full",
+        "what is eating my storage",
+        "where did my space go",
+        "disk is almost full",
+        "find what is using my storage",
+        "what is taking up all my space",
+        "show biggest space users"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Scans your drives and shows a breakdown of what is consuming your disk space, organized by folder and file type.",
+      "beforeRunMessage": "Scanning your drive for space usage. This may take a moment on large drives. Nothing will be changed.",
+      "afterRunMessage": "Here is where your disk space went. Focus on the largest items to recover the most space.",
+      "psFunction": "who-stole-my-disk-space"
+    },
+    {
+      "id": "storage.giant_files",
+      "publicCommand": "Find the largest files on my PC",
+      "aliases": [
+        "find big files",
+        "what are my largest files",
+        "find space eating files",
+        "show huge files",
+        "find files over 1GB",
+        "what is taking the most space",
+        "hunt big files"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Searches your drive and returns a ranked list of the largest files so you can quickly identify candidates to delete or move.",
+      "beforeRunMessage": "Searching for the largest files on your drive. This may take a few minutes. Nothing will be changed.",
+      "afterRunMessage": "Here are your biggest files. Delete or move any you no longer need to recover significant space.",
+      "psFunction": "find-the-giant-files"
+    },
+    {
+      "id": "storage.windows_junk",
+      "publicCommand": "Remove old Windows update files",
+      "aliases": [
+        "delete Windows update leftovers",
+        "clean up after Windows update",
+        "remove old update files",
+        "free space from updates",
+        "delete WinSxS junk",
+        "clean up Windows update cache",
+        "remove superseded updates"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Uses Disk Cleanup and DISM to remove superseded Windows update files, temporary update caches, and component store backups that are no longer needed.",
+      "beforeRunMessage": "This will permanently delete old Windows update files. You will not be able to uninstall those specific updates afterward, but your current Windows version will not be affected.",
+      "afterRunMessage": "Old Windows update files have been removed. Check the results to see how much space was recovered.",
+      "psFunction": "kill-old-windows-junk"
+    },
+    {
+      "id": "storage.duplicates",
+      "publicCommand": "Find duplicate files",
+      "aliases": [
+        "find duplicate photos",
+        "same file saved twice",
+        "find copies of files",
+        "find redundant files",
+        "find files I have twice",
+        "scan for duplicates",
+        "find identical files"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Scans your folders for files with identical content and lists the duplicates so you can review and delete the extras.",
+      "beforeRunMessage": "Scanning for duplicate files. This may take a while depending on how many files you have. Nothing will be deleted yet.",
+      "afterRunMessage": "Here are your duplicate files. Review the list carefully and delete only the copies you are sure you do not need.",
+      "psFunction": "find-duplicate-files"
+    },
+    {
+      "id": "storage.windows_old",
+      "publicCommand": "Delete the Windows.old folder",
+      "aliases": [
+        "remove old Windows folder",
+        "delete previous Windows installation",
+        "remove Windows backup folder",
+        "get rid of Windows.old",
+        "free space from old Windows",
+        "delete the old OS backup",
+        "remove the old Windows version"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "action",
+      "riskLevel": "destructive",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Permanently removes the Windows.old folder that was left behind after a Windows upgrade, recovering the disk space it occupies.",
+      "beforeRunMessage": "WARNING: Windows.old will be permanently deleted. You will no longer be able to roll back to the previous Windows version. This cannot be undone.",
+      "afterRunMessage": "Windows.old has been deleted. The disk space has been recovered. You can no longer roll back to the previous version of Windows.",
+      "psFunction": "remove-windows-old"
+    },
+    {
+      "id": "storage.hiberfil",
+      "publicCommand": "Shrink the hibernation file",
+      "aliases": [
+        "hibernation file is huge",
+        "hiberfil.sys taking space",
+        "reduce hibernate file size",
+        "shrink hiberfil",
+        "free space from hibernation",
+        "make hibernation file smaller",
+        "hiberfil is wasting space"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Reduces the size of the hiberfil.sys file that Windows uses for hibernation, or disables hibernation entirely to reclaim the space it uses.",
+      "beforeRunMessage": "This will shrink or disable the hibernation file. If hibernation is fully disabled, the hibernate option will be removed from the power menu.",
+      "afterRunMessage": "The hibernation file has been adjusted. Check how much space was recovered.",
+      "psFunction": "shrink-hibernation-file"
+    },
+    {
+      "id": "storage.hidden_downloads",
+      "publicCommand": "Find files apps downloaded without asking",
+      "aliases": [
+        "apps downloaded things without permission",
+        "find background downloads",
+        "apps downloading stuff secretly",
+        "what did apps download",
+        "hidden app downloads",
+        "find auto-downloaded files",
+        "what downloaded itself"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Searches common locations where apps silently download files, caches, and updates without your explicit permission.",
+      "beforeRunMessage": "Scanning for files downloaded by apps without your knowledge. Nothing will be changed.",
+      "afterRunMessage": "Here are files that apps downloaded without explicitly asking you. Review the list and remove anything you do not want.",
+      "psFunction": "find-hidden-downloads"
+    },
+    {
+      "id": "storage.old_installers",
+      "publicCommand": "Find old installer files I never deleted",
+      "aliases": [
+        "old setup files taking space",
+        "find forgotten installers",
+        "find setup EXE files",
+        "old install files on my drive",
+        "find MSI and EXE installers",
+        "leftover install files",
+        "find setup files I downloaded"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Locates setup and installer files across your drives that were downloaded to install software but never cleaned up afterward.",
+      "beforeRunMessage": "Searching for old installer and setup files. Nothing will be changed.",
+      "afterRunMessage": "Here are the installer files found on your PC. If the software is already installed, you can safely delete the installer files.",
+      "psFunction": "find-abandoned-installers"
+    },
+    {
+      "id": "storage.move_downloads",
+      "publicCommand": "Move my Downloads folder to another drive",
+      "aliases": [
+        "move Downloads to D drive",
+        "change Downloads folder location",
+        "put Downloads on another drive",
+        "redirect Downloads folder",
+        "save Downloads to external drive",
+        "move my Downloads",
+        "change where downloads save"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Relocates your Downloads folder to a different drive or partition so new downloads no longer fill up your main Windows drive.",
+      "beforeRunMessage": "This will move your Downloads folder to a new location. Existing files will be moved and all future downloads will go to the new location.",
+      "afterRunMessage": "Your Downloads folder has been moved. Future downloads will go to the new location automatically.",
+      "psFunction": "move-downloads-folder"
+    },
+    {
+      "id": "storage.browser_cache",
+      "publicCommand": "Clear browser leftover files",
+      "aliases": [
+        "clear browser cache",
+        "delete browser junk",
+        "browsers taking too much space",
+        "clear browser data",
+        "delete cached web pages",
+        "free space from browser cache",
+        "clean up browser leftovers"
+      ],
+      "category": "Storage Recovery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Clears cached files, temporary internet files, and other leftover data that browsers store on your drive over time.",
+      "beforeRunMessage": "This will clear browser cache and temporary files for detected browsers. You may need to log back in to some websites afterward.",
+      "afterRunMessage": "Browser leftover files have been cleared. Some websites may load slightly slower on first visit as they rebuild their cache.",
+      "psFunction": "clean-browser-leftovers"
+    },
+    {
+      "id": "network.wifi_password",
+      "publicCommand": "Show my WiFi password",
+      "aliases": [
+        "what is my WiFi password",
+        "I forgot my WiFi password",
+        "find my network password",
+        "retrieve WiFi key",
+        "show network security key",
+        "get my wireless password",
+        "what password am I connected with"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Retrieves and displays the stored password for your currently connected WiFi network or any saved network you specify.",
+      "beforeRunMessage": "Retrieving your stored WiFi password. Nothing will be changed.",
+      "afterRunMessage": "Here is your WiFi password. Keep it somewhere safe and do not share it with people you do not trust.",
+      "psFunction": "show-wifi-password"
+    },
+    {
+      "id": "network.all_networks",
+      "publicCommand": "Show all saved WiFi networks",
+      "aliases": [
+        "list saved networks",
+        "what WiFi networks does my PC know",
+        "see all remembered networks",
+        "show wireless profiles",
+        "list WiFi history",
+        "see every network I have connected to",
+        "what WiFi passwords does Windows have"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Lists all WiFi network profiles saved on your PC, including networks you have connected to in the past.",
+      "beforeRunMessage": "Retrieving all saved WiFi network profiles. Nothing will be changed.",
+      "afterRunMessage": "Here are all the WiFi networks your PC has saved. You can forget any networks you no longer use or recognize.",
+      "psFunction": "show-all-saved-networks"
+    },
+    {
+      "id": "network.forget_network",
+      "publicCommand": "Forget a saved WiFi network",
+      "aliases": [
+        "remove a saved network",
+        "delete WiFi profile",
+        "stop connecting to old network",
+        "remove a remembered network",
+        "delete a WiFi connection",
+        "remove network from list",
+        "stop auto-connecting to network"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Removes a saved WiFi network profile from Windows so your PC will no longer automatically connect to it or remember its password.",
+      "beforeRunMessage": "This will delete the saved profile for the selected network. You will need to re-enter the password if you want to connect to it again.",
+      "afterRunMessage": "The network profile has been removed. Your PC will no longer auto-connect to that network.",
+      "psFunction": "forget-a-network"
+    },
+    {
+      "id": "network.my_ip",
+      "publicCommand": "Show my IP address",
+      "aliases": [
+        "what is my IP",
+        "find my IP address",
+        "what IP am I",
+        "show network addresses",
+        "my internet address",
+        "show local and public IP",
+        "what IP does my PC have"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Displays your local network IP address, your public internet IP address, subnet mask, and gateway information.",
+      "beforeRunMessage": "Retrieving your IP address information. Nothing will be changed.",
+      "afterRunMessage": "Here are your IP addresses. Your local IP is used inside your home network. Your public IP is what websites see.",
+      "psFunction": "what-is-my-ip-address"
+    },
+    {
+      "id": "network.fix_internet",
+      "publicCommand": "Fix no internet connection",
+      "aliases": [
+        "internet is not working",
+        "WiFi connected but no internet",
+        "no internet access",
+        "internet stopped working",
+        "fix my connection",
+        "troubleshoot internet",
+        "why can I not get online"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Runs a series of network repair steps including flushing DNS, resetting the TCP/IP stack, releasing and renewing your IP address, and resetting Winsock.",
+      "beforeRunMessage": "This will reset several network components to fix your connection. Your network may disconnect briefly during the repair process.",
+      "afterRunMessage": "Network repair steps have been completed. If you are still offline, try restarting your router and then running a full network reset.",
+      "psFunction": "fix-no-internet"
+    },
+    {
+      "id": "network.reset_network",
+      "publicCommand": "Full network reset",
+      "aliases": [
+        "reset all network settings",
+        "nuclear option for network",
+        "wipe network configuration",
+        "start network from scratch",
+        "reset network completely",
+        "fix persistent network problems",
+        "clear all network settings"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Performs a complete network stack reset, removing all network adapters and reinstalling them, and resetting all TCP/IP, DNS, and Winsock settings to defaults.",
+      "beforeRunMessage": "This will completely reset your network configuration. All saved network settings will be wiped and your PC will need to reboot. Re-enter your WiFi password after restart.",
+      "afterRunMessage": "Network reset is complete. Your PC needs to restart to finish the process. After reboot, reconnect to your WiFi network.",
+      "psFunction": "reset-network-completely"
+    },
+    {
+      "id": "network.change_dns",
+      "publicCommand": "Switch to faster DNS",
+      "aliases": [
+        "use Google DNS",
+        "use Cloudflare DNS",
+        "change DNS server",
+        "slow internet switch DNS",
+        "fix slow websites with DNS",
+        "use a better DNS",
+        "stop using my ISP DNS"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Changes your DNS server from your ISP's default to a faster and more privacy-friendly option such as Cloudflare 1.1.1.1 or Google 8.8.8.8.",
+      "beforeRunMessage": "This will change your DNS server. Websites may load faster or resolve differently. If anything breaks, you can always switch back.",
+      "afterRunMessage": "Your DNS has been changed. Websites should resolve faster. Run a speed test to confirm the improvement.",
+      "psFunction": "change-my-dns"
+    },
+    {
+      "id": "network.who_on_wifi",
+      "publicCommand": "See who is on my WiFi",
+      "aliases": [
+        "who is using my internet",
+        "find devices on my network",
+        "see connected devices",
+        "who is on my network",
+        "list network devices",
+        "find strangers on my WiFi",
+        "see everything connected to my router"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Scans your local network and lists all devices currently connected, showing their IP address, hostname, and MAC address where available.",
+      "beforeRunMessage": "Scanning your local network for connected devices. This may take up to 30 seconds. Nothing will be changed.",
+      "afterRunMessage": "Here are all devices found on your network. If you see anything unfamiliar, change your WiFi password and consider enabling MAC filtering.",
+      "psFunction": "see-who-is-on-my-network"
+    },
+    {
+      "id": "network.metered",
+      "publicCommand": "Stop automatic downloads on this connection",
+      "aliases": [
+        "stop Windows downloading on this network",
+        "save data on this connection",
+        "set as metered connection",
+        "stop auto updates on WiFi",
+        "prevent background downloads",
+        "stop data usage on this network",
+        "mark connection as metered"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Marks your current network connection as metered, which tells Windows and apps to minimize background data usage and pause automatic updates.",
+      "beforeRunMessage": "This will mark your connection as metered. Windows updates and some app syncing will pause or reduce data usage on this network.",
+      "afterRunMessage": "Your connection is now set as metered. Windows will reduce background downloads and automatic updates on this network.",
+      "psFunction": "stop-metered-surprise"
+    },
+    {
+      "id": "network.usage",
+      "publicCommand": "Show which apps are using my internet",
+      "aliases": [
+        "what apps are using bandwidth",
+        "see internet usage by app",
+        "which program is downloading",
+        "what is using my internet",
+        "find bandwidth hogs",
+        "see data usage per app",
+        "which apps are online right now"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Shows a breakdown of which apps and processes are currently using your internet connection and how much data each has consumed.",
+      "beforeRunMessage": "Checking network usage by application. Nothing will be changed.",
+      "afterRunMessage": "Here is your app-by-app internet usage. Anything consuming unexpected amounts of data is worth investigating.",
+      "psFunction": "see-my-network-usage"
+    },
+    {
+      "id": "network.block_app",
+      "publicCommand": "Block an app from the internet",
+      "aliases": [
+        "stop app from going online",
+        "prevent app from using internet",
+        "block program from internet",
+        "firewall block an app",
+        "stop app phoning home",
+        "prevent app from connecting",
+        "cut app off from internet"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Creates a Windows Firewall rule to block a specific application from making any outbound or inbound internet connections.",
+      "beforeRunMessage": "This will create a firewall rule that blocks the selected app from the internet. The app will still run but will not be able to connect online.",
+      "afterRunMessage": "The firewall rule has been created. The selected app is now blocked from the internet. You can remove the rule at any time to restore access.",
+      "psFunction": "block-app-from-internet"
+    },
+    {
+      "id": "network.connections",
+      "publicCommand": "Show all active network connections",
+      "aliases": [
+        "see all open connections",
+        "what is my PC connected to",
+        "show active connections",
+        "list network connections",
+        "what servers am I talking to",
+        "see open ports and connections",
+        "what is my PC communicating with"
+      ],
+      "category": "Network & WiFi",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your WiFi Has Secrets",
+      "plainEnglishPurpose": "Lists all active TCP and UDP network connections, the ports they use, and the remote addresses your PC is currently communicating with.",
+      "beforeRunMessage": "Retrieving all active network connections. Nothing will be changed.",
+      "afterRunMessage": "Here are all active connections. Look for any unfamiliar remote addresses or ports that could indicate unwanted background communication.",
+      "psFunction": "show-open-connections"
+    },
+    {
+      "id": "power.stop_wakeups",
+      "publicCommand": "Stop my PC from waking up on its own",
+      "aliases": [
+        "PC keeps waking up at night",
+        "computer wakes up by itself",
+        "stop random wake ups",
+        "PC turns on alone",
+        "stop computer waking from sleep",
+        "why does my PC wake up",
+        "prevent automatic wake up"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Identifies and disables the wake timers, scheduled tasks, and devices that are causing your PC to wake from sleep on its own.",
+      "beforeRunMessage": "This will disable wake timers and adjust device settings that are waking your PC. Some scheduled maintenance tasks may no longer run at night.",
+      "afterRunMessage": "Wake timers have been disabled. Your PC should stay asleep until you decide to wake it.",
+      "psFunction": "stop-3am-wakeups"
+    },
+    {
+      "id": "power.what_woke",
+      "publicCommand": "Find out what woke my computer",
+      "aliases": [
+        "what woke my PC",
+        "why did my computer turn on",
+        "find the wake reason",
+        "what woke my laptop",
+        "check wake history",
+        "see what triggered wake up",
+        "why did my PC come on"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Reads the Windows event log to show exactly what triggered your PC to wake from sleep or hibernation.",
+      "beforeRunMessage": "Checking the event log for wake events. Nothing will be changed.",
+      "afterRunMessage": "Here is what woke your PC. Use this information to identify and disable the culprit.",
+      "psFunction": "see-what-woke-my-pc"
+    },
+    {
+      "id": "power.battery_report",
+      "publicCommand": "Check my battery health",
+      "aliases": [
+        "how healthy is my battery",
+        "battery degrading",
+        "check battery capacity",
+        "battery wearing out",
+        "see battery report",
+        "laptop battery health check",
+        "how much battery life is left"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Generates a detailed battery health report showing your battery's design capacity, current capacity, and how much it has degraded over time.",
+      "beforeRunMessage": "Generating your battery health report. This will take a few seconds. Nothing will be changed.",
+      "afterRunMessage": "Your battery report is ready. Check the design capacity vs current capacity to see how much your battery has worn down.",
+      "psFunction": "get-battery-report"
+    },
+    {
+      "id": "power.battery_saver",
+      "publicCommand": "Make my battery last longer",
+      "aliases": [
+        "extend battery life",
+        "save more battery",
+        "battery dies too fast",
+        "how do I get more battery",
+        "optimize power for battery",
+        "make laptop battery last",
+        "reduce battery drain"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Applies power saving settings including reduced screen brightness, stricter background app limits, and a balanced or power saver plan to maximize battery runtime.",
+      "beforeRunMessage": "This will apply battery-saving settings. Your screen may dim and some background features may be limited to extend battery life.",
+      "afterRunMessage": "Battery saving settings have been applied. Your laptop should last longer on a charge.",
+      "psFunction": "make-battery-last-longer"
+    },
+    {
+      "id": "power.fast_startup",
+      "publicCommand": "Fix wake from sleep problems",
+      "aliases": [
+        "PC not waking from sleep properly",
+        "sleep mode broken",
+        "wake from sleep fails",
+        "PC freezes after sleep",
+        "sleep and wake issues",
+        "fix sleep mode",
+        "computer does not wake up correctly"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Disables Fast Startup which can cause wake and resume failures, and resets related power settings to fix common sleep and wake problems.",
+      "beforeRunMessage": "This will disable Fast Startup and adjust sleep-related settings. Your PC may take slightly longer to boot but should wake from sleep reliably.",
+      "afterRunMessage": "Fast Startup has been disabled and sleep settings have been reset. Test your sleep and wake behavior to confirm the fix.",
+      "psFunction": "stop-fast-startup-problems"
+    },
+    {
+      "id": "power.battery_drain",
+      "publicCommand": "See which apps are draining my battery",
+      "aliases": [
+        "what is killing my battery",
+        "apps using too much battery",
+        "battery drain by app",
+        "find battery draining apps",
+        "see power usage per app",
+        "what is draining my laptop battery",
+        "apps that kill battery"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Shows a breakdown of battery usage by app over the past 24 hours and 7 days so you can identify which applications are consuming the most power.",
+      "beforeRunMessage": "Checking battery usage history by app. Nothing will be changed.",
+      "afterRunMessage": "Here is your battery usage by app. The top drainers are listed first. Consider limiting or closing apps that are using more power than expected.",
+      "psFunction": "see-battery-drain-by-app"
+    },
+    {
+      "id": "power.usb_wake",
+      "publicCommand": "Stop USB devices from waking my PC",
+      "aliases": [
+        "mouse waking up my PC",
+        "keyboard waking my computer",
+        "USB device waking from sleep",
+        "stop devices waking computer",
+        "disable USB wake up",
+        "stop peripherals waking PC",
+        "mouse keeps waking my laptop"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Disables the wake-on-signal capability for USB devices so that mice, keyboards, and other USB peripherals can no longer wake your PC from sleep.",
+      "beforeRunMessage": "This will prevent USB devices from waking your PC. You will need to press the power button to wake your PC from sleep instead of clicking the mouse.",
+      "afterRunMessage": "USB wake has been disabled. Your USB devices can no longer wake the PC from sleep.",
+      "psFunction": "stop-usb-waking-pc"
+    },
+    {
+      "id": "power.screen_timeout",
+      "publicCommand": "Change how long before screen turns off",
+      "aliases": [
+        "screen turns off too fast",
+        "screen stays on too long",
+        "adjust screen timeout",
+        "change display timeout",
+        "stop screen turning off",
+        "screen off timer",
+        "how long until screen sleeps"
+      ],
+      "category": "Power & Battery",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Stop Waking Up My Computer",
+      "plainEnglishPurpose": "Sets the amount of idle time before Windows turns off your display, separately for when plugged in and when on battery.",
+      "beforeRunMessage": "This will change your screen timeout setting. Your display will turn off after the new time period of inactivity.",
+      "afterRunMessage": "Screen timeout has been updated. Your display will now follow the new timing you set.",
+      "psFunction": "set-screen-off-time"
+    },
+    {
+      "id": "security.saved_passwords",
+      "publicCommand": "Show my saved passwords",
+      "aliases": [
+        "where does Windows store passwords",
+        "see my stored passwords",
+        "find Windows credential manager",
+        "see saved logins",
+        "view stored passwords",
+        "find my passwords Windows",
+        "show credentials Windows saved"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Opens and reads the Windows Credential Manager to display saved passwords, usernames, and credentials stored by Windows and connected apps.",
+      "beforeRunMessage": "Retrieving saved credentials from Windows Credential Manager. Nothing will be changed.",
+      "afterRunMessage": "Here are the credentials Windows has saved. Review the list and remove any outdated or unrecognized entries.",
+      "psFunction": "see-saved-passwords"
+    },
+    {
+      "id": "security.login_history",
+      "publicCommand": "See who has logged into this PC",
+      "aliases": [
+        "login history",
+        "who used my PC",
+        "see logon events",
+        "check account login log",
+        "who signed in",
+        "see login attempts",
+        "audit who accessed my computer"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Reads the Windows Security event log to show a history of successful and failed login attempts on this PC, including account names and timestamps.",
+      "beforeRunMessage": "Reading the Windows login event log. Nothing will be changed.",
+      "afterRunMessage": "Here is your login history. Look for any logins at unusual times or from accounts you do not recognize.",
+      "psFunction": "see-who-logged-in"
+    },
+    {
+      "id": "security.rootkit_scan",
+      "publicCommand": "Run a deep malware scan",
+      "aliases": [
+        "scan for viruses",
+        "deep malware scan",
+        "check for rootkits",
+        "am I infected",
+        "run antivirus scan",
+        "full security scan",
+        "scan for hidden malware"
+      ],
+      "category": "Security",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": false,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Triggers a full Windows Defender offline scan that can detect rootkits and malware that evade normal scans by running before Windows fully loads.",
+      "beforeRunMessage": "This will schedule a full offline malware scan. Your PC will need to restart to run the scan before Windows loads. Save all open work before continuing.",
+      "afterRunMessage": "The offline scan has been scheduled. Your PC will restart and run the deep scan automatically. Results will appear after Windows reloads.",
+      "psFunction": "check-for-rootkits"
+    },
+    {
+      "id": "security.bitlocker_status",
+      "publicCommand": "Check if my drive is encrypted",
+      "aliases": [
+        "is my drive encrypted",
+        "BitLocker on or off",
+        "check drive encryption",
+        "see if BitLocker is enabled",
+        "is my data safe if PC is stolen",
+        "check encryption status",
+        "is my hard drive encrypted"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Checks whether BitLocker drive encryption is enabled on your drives and shows the encryption status and protection state for each volume.",
+      "beforeRunMessage": "Checking BitLocker encryption status. Nothing will be changed.",
+      "afterRunMessage": "Here is the encryption status for your drives. If BitLocker is off, your data could be read by anyone with physical access to your drive.",
+      "psFunction": "check-bitlocker-status"
+    },
+    {
+      "id": "security.bitlocker_key",
+      "publicCommand": "Back up my BitLocker recovery key",
+      "aliases": [
+        "save BitLocker key",
+        "export recovery key",
+        "backup encryption key",
+        "where is my BitLocker key",
+        "save BitLocker recovery",
+        "print BitLocker key",
+        "copy recovery key to safe place"
+      ],
+      "category": "Security",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Retrieves your BitLocker recovery key and guides you through saving it to a safe location such as a file, printer, or Microsoft account.",
+      "beforeRunMessage": "This will retrieve your BitLocker recovery key. Store it somewhere secure and separate from your PC — you will need it if you ever cannot boot.",
+      "afterRunMessage": "Your BitLocker recovery key has been displayed. Make sure you save it somewhere safe outside of this PC before closing this window.",
+      "psFunction": "save-bitlocker-key"
+    },
+    {
+      "id": "security.app_permissions",
+      "publicCommand": "See what permissions my apps have",
+      "aliases": [
+        "what can my apps access",
+        "app permission audit",
+        "see app access rights",
+        "which apps have what permissions",
+        "review app permissions",
+        "what do installed apps have access to",
+        "see permissions for all apps"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Lists the sensitive permissions granted to your installed apps including camera, microphone, location, contacts, and calendar access.",
+      "beforeRunMessage": "Auditing app permissions. Nothing will be changed.",
+      "afterRunMessage": "Here are the permissions your apps have been granted. Revoke access for any app that does not need a particular permission.",
+      "psFunction": "see-app-permissions"
+    },
+    {
+      "id": "security.autorun_threats",
+      "publicCommand": "Check for suspicious startup entries",
+      "aliases": [
+        "find malware in startup",
+        "suspicious startup programs",
+        "check for autorun malware",
+        "find unknown startup entries",
+        "is there malware in my startup",
+        "check startup for threats",
+        "look for suspicious autorun items"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Scans startup locations including registry run keys, scheduled tasks, and startup folders for entries that look suspicious or unusual.",
+      "beforeRunMessage": "Scanning startup locations for suspicious entries. Nothing will be changed.",
+      "afterRunMessage": "Here are your startup entries with risk indicators. Investigate any entries with unknown publishers, unusual paths, or obfuscated names.",
+      "psFunction": "find-autorun-threats"
+    },
+    {
+      "id": "security.admin_accounts",
+      "publicCommand": "See who has admin rights on this PC",
+      "aliases": [
+        "list admin accounts",
+        "who is administrator",
+        "see all admins",
+        "find accounts with admin access",
+        "who has full control of this PC",
+        "list administrator users",
+        "see admin group members"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Lists all user accounts on this PC that have administrator privileges so you can verify only trusted accounts have full control.",
+      "beforeRunMessage": "Checking which accounts have administrator rights. Nothing will be changed.",
+      "afterRunMessage": "Here are all accounts with administrator access. If you see any accounts that should not have admin rights, remove them from the administrators group.",
+      "psFunction": "see-admin-accounts"
+    },
+    {
+      "id": "security.remove_password",
+      "publicCommand": "Remove a saved password",
+      "aliases": [
+        "delete a saved password",
+        "remove stored credential",
+        "clear a saved login",
+        "delete credential from Windows",
+        "remove password from credential manager",
+        "forget a saved login",
+        "remove a saved username and password"
+      ],
+      "category": "Security",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Removes a specific saved password or credential from the Windows Credential Manager so it is no longer stored on this PC.",
+      "beforeRunMessage": "This will permanently delete the selected saved credential. You will need to re-enter the password manually next time you access that resource.",
+      "afterRunMessage": "The saved credential has been removed. Windows will ask you to log in manually next time you access that resource.",
+      "psFunction": "remove-saved-password"
+    },
+    {
+      "id": "security.firewall",
+      "publicCommand": "Check if my firewall is on",
+      "aliases": [
+        "is my firewall on",
+        "firewall status",
+        "check Windows firewall",
+        "is firewall enabled",
+        "verify firewall is running",
+        "see firewall state",
+        "is Windows protecting me"
+      ],
+      "category": "Security",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Your Passwords Are in Here Somewhere",
+      "plainEnglishPurpose": "Checks the status of Windows Defender Firewall across all network profiles and reports whether it is enabled and protecting your connection.",
+      "beforeRunMessage": "Checking Windows Firewall status. Nothing will be changed.",
+      "afterRunMessage": "Here is your firewall status for each network profile. If any profile shows as disabled, re-enable it immediately.",
+      "psFunction": "check-firewall-status"
+    },
+    {
+      "id": "apps.list_all",
+      "publicCommand": "Show everything installed on my PC",
+      "aliases": [
+        "list all installed apps",
+        "see all my programs",
+        "what is installed on my PC",
+        "show all software",
+        "list all programs",
+        "see every app installed",
+        "show installed software"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Generates a complete list of all installed applications including traditional desktop apps, Microsoft Store apps, and system components with their version and install date.",
+      "beforeRunMessage": "Retrieving a full list of installed software. Nothing will be changed.",
+      "afterRunMessage": "Here is everything installed on your PC. Look for apps you do not recognize or no longer need.",
+      "psFunction": "see-all-installed-apps"
+    },
+    {
+      "id": "apps.remove_bloat",
+      "publicCommand": "Remove manufacturer bloatware",
+      "aliases": [
+        "remove OEM bloatware",
+        "delete pre-installed junk",
+        "uninstall manufacturer junk apps",
+        "remove Lenovo Dell HP bloatware",
+        "get rid of factory installed apps",
+        "remove vendor crapware",
+        "uninstall pre-loaded programs"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Identifies and removes common manufacturer-installed bloatware from brands like Dell, HP, Lenovo, and Asus that came pre-loaded on your PC.",
+      "beforeRunMessage": "This will uninstall identified manufacturer bloatware. Review the list carefully — some manufacturer apps like driver utilities may be useful. Removed apps can be reinstalled from the manufacturer website.",
+      "afterRunMessage": "Manufacturer bloatware has been removed. Your PC should have more storage and fewer background processes.",
+      "psFunction": "remove-the-bloat"
+    },
+    {
+      "id": "apps.remove_ms_bloat",
+      "publicCommand": "Remove Microsoft pre-installed apps",
+      "aliases": [
+        "remove Windows bloatware",
+        "uninstall Microsoft junk apps",
+        "remove pre-installed Microsoft apps",
+        "delete apps I never asked for",
+        "remove candy crush and Xbox",
+        "uninstall default Windows apps",
+        "remove Microsoft crapware"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Removes Microsoft-installed apps that come with Windows by default and that most users never use, such as games, Clipchamp, and promotional apps.",
+      "beforeRunMessage": "This will uninstall selected Microsoft pre-installed apps. Some of these can be reinstalled from the Microsoft Store if you change your mind. Review the list before proceeding.",
+      "afterRunMessage": "Microsoft bloatware has been removed. Your Start menu and app list should be cleaner.",
+      "psFunction": "remove-windows-bloatware"
+    },
+    {
+      "id": "apps.fix_app",
+      "publicCommand": "Fix a broken app",
+      "aliases": [
+        "app not working",
+        "app crashes",
+        "how to fix an app",
+        "repair broken application",
+        "app stopped working",
+        "app keeps crashing",
+        "fix an app that won't open"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Attempts to repair a selected application using its built-in repair function or the Windows app repair mechanism without losing your data or settings.",
+      "beforeRunMessage": "This will attempt to repair the selected app. Your app data and settings should not be affected.",
+      "afterRunMessage": "The repair process has completed. Try opening the app again to confirm it is working.",
+      "psFunction": "fix-broken-app"
+    },
+    {
+      "id": "apps.reset_app",
+      "publicCommand": "Reset an app to factory settings",
+      "aliases": [
+        "wipe app settings",
+        "reset app to default",
+        "clear app data",
+        "start app fresh",
+        "app is acting weird reset it",
+        "restore app to original settings",
+        "factory reset an app"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Resets a selected Microsoft Store app completely, wiping all its data, cache, and settings so it starts fresh as if newly installed.",
+      "beforeRunMessage": "This will reset the selected app and permanently delete all its local data and settings. This cannot be undone.",
+      "afterRunMessage": "The app has been reset to factory defaults. Open it to go through its initial setup again.",
+      "psFunction": "reset-app-to-default"
+    },
+    {
+      "id": "apps.default_browser",
+      "publicCommand": "Change my default browser",
+      "aliases": [
+        "set Chrome as default",
+        "set Firefox as default",
+        "change default web browser",
+        "make Chrome my browser",
+        "stop Edge opening links",
+        "use a different browser as default",
+        "make my browser the default"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Changes your default web browser so that links from emails, documents, and other apps open in your preferred browser instead of Edge.",
+      "beforeRunMessage": "This will change your default browser. Links from external apps will open in the new browser you select.",
+      "afterRunMessage": "Your default browser has been changed. Links and web content will now open in your chosen browser.",
+      "psFunction": "set-default-browser"
+    },
+    {
+      "id": "apps.kill_suggestions",
+      "publicCommand": "Stop Windows from suggesting apps",
+      "aliases": [
+        "stop app recommendations",
+        "disable app suggestions",
+        "stop Windows pushing apps",
+        "no more suggested apps",
+        "stop Windows advertising apps",
+        "disable promoted apps",
+        "stop Start menu app suggestions"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Disables app suggestions, promoted apps, and third-party app recommendations that appear in the Start menu and other parts of Windows.",
+      "beforeRunMessage": "This will disable app suggestions and promotions in the Start menu and Windows interface. No apps will be installed or removed.",
+      "afterRunMessage": "App suggestions and promotions have been disabled. Windows will no longer advertise apps to you in the Start menu.",
+      "psFunction": "kill-suggested-apps"
+    },
+    {
+      "id": "apps.unused",
+      "publicCommand": "Find apps I have never opened",
+      "aliases": [
+        "apps I never use",
+        "find unused software",
+        "what apps am I not using",
+        "software I never open",
+        "find apps taking space doing nothing",
+        "see apps I forgot I had",
+        "show unused installed apps"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Identifies installed applications that have never been launched or have not been used in a long time based on last-run timestamps.",
+      "beforeRunMessage": "Checking app usage history. Nothing will be changed.",
+      "afterRunMessage": "Here are apps that appear to have never been launched or not used recently. Consider uninstalling any you truly do not need.",
+      "psFunction": "find-apps-you-never-open"
+    },
+    {
+      "id": "apps.fix_store",
+      "publicCommand": "Fix the Microsoft Store",
+      "aliases": [
+        "Microsoft Store not working",
+        "Store app broken",
+        "fix Windows Store",
+        "Store won't open",
+        "reset the Microsoft Store",
+        "Microsoft Store crashes",
+        "Store not loading"
+      ],
+      "category": "Apps & Bloatware",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "50 Apps You Never Installed",
+      "plainEnglishPurpose": "Resets and repairs the Microsoft Store app and its related components to fix issues with downloading, updating, or launching the Store.",
+      "beforeRunMessage": "This will reset the Microsoft Store and clear its cache. You will stay logged in to your Microsoft account.",
+      "afterRunMessage": "The Microsoft Store has been reset. Try opening it again to confirm it is working.",
+      "psFunction": "repair-microsoft-store"
+    },
+    {
+      "id": "display.dark_mode",
+      "publicCommand": "Turn on dark mode",
+      "aliases": [
+        "switch to dark mode",
+        "dark theme Windows",
+        "make Windows dark",
+        "dark mode now",
+        "enable dark theme",
+        "dark background Windows",
+        "switch Windows to dark"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Switches Windows and supported apps to dark mode, changing the system theme to use dark backgrounds and light text throughout the interface.",
+      "beforeRunMessage": "This will switch Windows to dark mode. The change takes effect immediately for the system and most apps.",
+      "afterRunMessage": "Dark mode is now on. Some older apps may not fully support dark mode and will continue to display with a light theme.",
+      "psFunction": "turn-on-dark-mode"
+    },
+    {
+      "id": "display.fix_blurry",
+      "publicCommand": "Fix blurry apps on my screen",
+      "aliases": [
+        "apps look blurry",
+        "fuzzy app text",
+        "blurry program windows",
+        "apps not sharp",
+        "fix blurry text in apps",
+        "DPI scaling blurry apps",
+        "apps are out of focus"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Enables the Windows automatic DPI fix for blurry apps and applies per-application DPI overrides so apps appear sharp on high-resolution displays.",
+      "beforeRunMessage": "This will adjust DPI settings for blurry apps. Some apps may need to be restarted to apply the fix.",
+      "afterRunMessage": "DPI fix has been applied. Restart any blurry apps to see if they appear sharper now.",
+      "psFunction": "fix-blurry-apps"
+    },
+    {
+      "id": "display.night_light",
+      "publicCommand": "Turn on night light",
+      "aliases": [
+        "enable night light",
+        "reduce blue light",
+        "warm screen at night",
+        "make screen easier on eyes",
+        "reduce eye strain at night",
+        "turn on blue light filter",
+        "warm screen colors"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Enables Windows Night Light which reduces blue light from your display in the evenings to reduce eye strain and help you sleep better.",
+      "beforeRunMessage": "This will turn on Night Light. Your screen colors will appear warmer. You can adjust the intensity or schedule in Display Settings.",
+      "afterRunMessage": "Night Light is now on. Your screen will use warmer colors to reduce eye strain. You can set a schedule so it turns on automatically at sunset.",
+      "psFunction": "turn-on-night-light"
+    },
+    {
+      "id": "display.refresh_rate",
+      "publicCommand": "Set my monitor to its max refresh rate",
+      "aliases": [
+        "increase refresh rate",
+        "set 144hz",
+        "set 120hz monitor",
+        "monitor running at wrong refresh rate",
+        "get full refresh rate",
+        "my monitor is stuck at 60hz",
+        "enable high refresh rate"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Detects your monitor's maximum supported refresh rate and sets Windows to use it, making motion smoother and more responsive on high refresh rate displays.",
+      "beforeRunMessage": "This will change your monitor refresh rate. Your screen may flicker briefly as the setting is applied.",
+      "afterRunMessage": "Your monitor refresh rate has been set to the maximum supported value. Motion should appear smoother now.",
+      "psFunction": "set-exact-refresh-rate"
+    },
+    {
+      "id": "display.fix_text",
+      "publicCommand": "Fix blurry or jagged text",
+      "aliases": [
+        "text looks wrong",
+        "fonts look bad",
+        "blurry text",
+        "jagged letters",
+        "text not clear",
+        "ClearType not working",
+        "fix font rendering"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Runs the ClearType text tuning wizard and adjusts font rendering settings to make text appear crisp and clear on your display.",
+      "beforeRunMessage": "This will tune ClearType font rendering. You may be asked to choose the sharpest-looking text samples during the process.",
+      "afterRunMessage": "Font rendering has been tuned. Text should appear clearer across Windows and most applications.",
+      "psFunction": "fix-text-looks-wrong"
+    },
+    {
+      "id": "display.clean_taskbar",
+      "publicCommand": "Clean up my taskbar",
+      "aliases": [
+        "tidy taskbar",
+        "remove junk from taskbar",
+        "clean the taskbar",
+        "declutter taskbar",
+        "remove taskbar icons",
+        "simplify taskbar",
+        "taskbar too cluttered"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Removes unnecessary icons, widgets, and system tray clutter from your taskbar to give you a cleaner and less distracting desktop.",
+      "beforeRunMessage": "This will remove various taskbar elements including widgets, search bar, and unnecessary system tray icons. You can restore them later in Taskbar Settings.",
+      "afterRunMessage": "Your taskbar has been cleaned up. The most useful items remain and the clutter has been removed.",
+      "psFunction": "make-taskbar-cleaner"
+    },
+    {
+      "id": "display.stop_dimming",
+      "publicCommand": "Stop my screen from dimming on its own",
+      "aliases": [
+        "screen keeps dimming",
+        "auto brightness is annoying",
+        "stop screen dimming",
+        "display dims by itself",
+        "adaptive brightness keeps changing",
+        "stop screen getting dark",
+        "screen darkens on its own"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Disables adaptive brightness and content-based brightness adjustment so your screen stays at the brightness level you set it to.",
+      "beforeRunMessage": "This will disable adaptive brightness. Your screen will stay at the brightness level you set manually and will not dim automatically based on content or ambient light.",
+      "afterRunMessage": "Adaptive brightness has been disabled. Your screen will no longer dim on its own.",
+      "psFunction": "stop-screen-dimming"
+    },
+    {
+      "id": "display.hdr",
+      "publicCommand": "Enable HDR on my monitor",
+      "aliases": [
+        "turn on HDR",
+        "enable high dynamic range",
+        "HDR display on",
+        "activate HDR",
+        "switch to HDR mode",
+        "enable HDR output",
+        "HDR for my screen"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Enables Windows HDR output on compatible monitors to display a wider range of colors and brightness for supported content.",
+      "beforeRunMessage": "This will enable HDR on your display. Note that HDR can make some non-HDR content look washed out. Make sure your monitor and cable support HDR before enabling.",
+      "afterRunMessage": "HDR has been enabled. HDR content will now display with enhanced color and brightness. If non-HDR content looks washed out, you can adjust Auto HDR settings.",
+      "psFunction": "enable-hdr"
+    },
+    {
+      "id": "display.cursor_size",
+      "publicCommand": "Make the mouse cursor bigger",
+      "aliases": [
+        "bigger mouse cursor",
+        "increase cursor size",
+        "large mouse pointer",
+        "can't see my cursor",
+        "make pointer more visible",
+        "cursor is too small",
+        "increase mouse pointer size"
+      ],
+      "category": "Display & Appearance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Increases the size and optionally changes the color of your mouse cursor to make it easier to see and track on screen.",
+      "beforeRunMessage": "This will change your mouse cursor size. The change takes effect immediately.",
+      "afterRunMessage": "Your mouse cursor has been made larger. If you want to adjust it further, you can do so in Accessibility Settings under Mouse Pointer.",
+      "psFunction": "set-cursor-size"
+    },
+    {
+      "id": "audio.fix_crackling",
+      "publicCommand": "Fix crackling or static audio",
+      "aliases": [
+        "Audio is crackling",
+        "Static sound from speakers",
+        "Popping audio",
+        "Distorted audio output",
+        "Sound cutting in and out",
+        "Speaker crackling noise"
+      ],
+      "category": "Audio",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Diagnoses and fixes crackling or static audio by restarting the audio service and resetting driver settings.",
+      "beforeRunMessage": "SHLLSHOCKD will restart your audio service and apply driver fixes. Sound may cut out briefly during the process.",
+      "afterRunMessage": "If crackling persists, try switching to a different audio output device or updating your audio driver.",
+      "psFunction": "fix-crackling-audio"
+    },
+    {
+      "id": "audio.volume_mixer",
+      "publicCommand": "Set volume separately per app",
+      "aliases": [
+        "App volume control",
+        "Different volume per program",
+        "Per app audio",
+        "Volume mixer",
+        "Adjust each app volume",
+        "Set volume by application"
+      ],
+      "category": "Audio",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Opens the Windows volume mixer so you can set a different volume level for each running application.",
+      "beforeRunMessage": "The volume mixer panel will open. No system settings will be changed automatically.",
+      "afterRunMessage": "Drag each app's slider to your preferred level. Changes take effect immediately.",
+      "psFunction": "set-volume-per-app"
+    },
+    {
+      "id": "audio.boost_mic",
+      "publicCommand": "Make my microphone louder",
+      "aliases": [
+        "Mic too quiet",
+        "Increase microphone volume",
+        "Microphone boost",
+        "People can't hear me",
+        "Mic level low",
+        "Turn up microphone"
+      ],
+      "category": "Audio",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Raises the microphone input level and enables the microphone boost option in Windows audio settings.",
+      "beforeRunMessage": "SHLLSHOCKD will increase your microphone volume. This may introduce background noise at very high levels.",
+      "afterRunMessage": "Test your microphone in a call or recording app. Lower the boost if you hear hissing or distortion.",
+      "psFunction": "boost-mic-volume"
+    },
+    {
+      "id": "audio.fix_no_sound",
+      "publicCommand": "Fix no sound",
+      "aliases": [
+        "No audio",
+        "Sound not working",
+        "Speakers not working",
+        "Muted suddenly",
+        "Audio disappeared",
+        "Can't hear anything"
+      ],
+      "category": "Audio",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Restores missing audio by restarting the Windows Audio service and resetting the default playback device.",
+      "beforeRunMessage": "SHLLSHOCKD will restart the audio service. Sound will be interrupted for a few seconds.",
+      "afterRunMessage": "If sound is restored, you are done. If not, check that the correct output device is selected in sound settings.",
+      "psFunction": "fix-no-sound"
+    },
+    {
+      "id": "audio.ducking",
+      "publicCommand": "Stop Windows from lowering volume during calls",
+      "aliases": [
+        "Volume drops during calls",
+        "Communications volume reduction",
+        "Audio ducks on calls",
+        "Windows lowers sound on calls",
+        "Volume too low during video call",
+        "Sound goes quiet on calls"
+      ],
+      "category": "Audio",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Disables the Windows communications audio ducking feature that automatically lowers other sounds during calls.",
+      "beforeRunMessage": "SHLLSHOCKD will disable automatic volume reduction during communication sessions.",
+      "afterRunMessage": "Other audio will no longer be reduced when you are on a call. Restart any open audio apps to apply the change.",
+      "psFunction": "stop-comms-ducking"
+    },
+    {
+      "id": "audio.bluetooth_stutter",
+      "publicCommand": "Fix Bluetooth audio cutting out",
+      "aliases": [
+        "Bluetooth audio skipping",
+        "Wireless headphone cuts out",
+        "Bluetooth speaker choppy",
+        "Audio drops over Bluetooth",
+        "Bluetooth sound stuttering",
+        "Wireless audio interruptions"
+      ],
+      "category": "Audio",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Applies the known Windows registry fix for Bluetooth audio stuttering caused by Wi-Fi interference and driver conflicts.",
+      "beforeRunMessage": "SHLLSHOCKD will apply a registry change for Bluetooth audio. A restart is required for the fix to take full effect.",
+      "afterRunMessage": "Restart your PC and reconnect your Bluetooth device. Audio should no longer stutter.",
+      "psFunction": "fix-bluetooth-audio-stutter"
+    },
+    {
+      "id": "files.extensions",
+      "publicCommand": "Show file extensions",
+      "aliases": [
+        "See file types",
+        "Show .txt .jpg extensions",
+        "Unhide file extensions",
+        "File type not showing",
+        "Show extension after filename",
+        "Display file extensions"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Turns on file extensions in Windows Explorer so you can see the full filename including its type suffix.",
+      "beforeRunMessage": "SHLLSHOCKD will update your Explorer settings to always show file extensions.",
+      "afterRunMessage": "File extensions are now visible in Explorer. You can now tell .jpg from .png and .doc from .docx at a glance.",
+      "psFunction": "show-file-extensions"
+    },
+    {
+      "id": "files.hidden",
+      "publicCommand": "Show hidden files and folders",
+      "aliases": [
+        "Reveal hidden files",
+        "See hidden folders",
+        "Show invisible files",
+        "Unhide system files",
+        "Hidden folder not showing",
+        "See all files including hidden"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Configures Windows Explorer to display hidden and system files that are normally invisible.",
+      "beforeRunMessage": "SHLLSHOCKD will update Explorer settings to show hidden files. System files will become visible.",
+      "afterRunMessage": "Hidden files and folders are now visible. Be careful not to delete system files you do not recognize.",
+      "psFunction": "show-hidden-files"
+    },
+    {
+      "id": "files.unlock",
+      "publicCommand": "Unlock a file that is in use",
+      "aliases": [
+        "File locked by another process",
+        "Cannot delete file in use",
+        "File is open somewhere",
+        "Release file lock",
+        "File access denied in use",
+        "File being used by another program"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Identifies which process is locking a file and gives you the option to close that process to release the lock.",
+      "beforeRunMessage": "SHLLSHOCKD will scan for the process holding the file lock. Closing that process may affect running work.",
+      "afterRunMessage": "If the locking process was closed, the file should now be accessible. Try your operation again.",
+      "psFunction": "unlock-a-locked-file"
+    },
+    {
+      "id": "files.ownership",
+      "publicCommand": "Take ownership of a file I cannot access",
+      "aliases": [
+        "Access denied to file",
+        "Permission denied file",
+        "Cannot open system file",
+        "Take file ownership",
+        "Claim ownership of folder",
+        "File access refused"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Transfers ownership of a locked or protected file or folder to your user account so you can access or modify it.",
+      "beforeRunMessage": "Taking ownership changes the file's security permissions. Only do this for files you own or are authorized to access.",
+      "afterRunMessage": "Ownership transferred. You should now be able to open, edit, or delete the file.",
+      "psFunction": "take-ownership-of-file"
+    },
+    {
+      "id": "files.long_paths",
+      "publicCommand": "Remove the 260 character file path limit",
+      "aliases": [
+        "Path too long error",
+        "File path limit",
+        "Long path name error",
+        "Cannot create deep folder",
+        "260 character limit",
+        "File name too long Windows"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Enables the Windows long path setting that lifts the 260-character file path limit for modern apps that support it.",
+      "beforeRunMessage": "SHLLSHOCKD will update a system policy to allow paths longer than 260 characters. A restart may be needed.",
+      "afterRunMessage": "Long path support is now enabled. Apps that support it can now use paths exceeding 260 characters.",
+      "psFunction": "enable-long-file-paths"
+    },
+    {
+      "id": "files.changed_today",
+      "publicCommand": "See what files changed today",
+      "aliases": [
+        "Files modified today",
+        "What was changed recently",
+        "Recent file changes",
+        "Find recently edited files",
+        "Files touched today",
+        "What changed on my PC today"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Lists all files that were created or modified today so you can see recent activity across your PC.",
+      "beforeRunMessage": "SHLLSHOCKD will scan your user folders for files modified in the last 24 hours. No changes will be made.",
+      "afterRunMessage": "Review the list. Unexpected changes may indicate background software or malware activity worth investigating.",
+      "psFunction": "find-files-changed-today"
+    },
+    {
+      "id": "files.symlink",
+      "publicCommand": "Create a folder shortcut that acts like the real thing",
+      "aliases": [
+        "Symbolic link",
+        "Create symlink",
+        "Mirror a folder",
+        "Folder alias",
+        "Hard link folder",
+        "Junction point"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Creates a symbolic link so a folder appears in two places at once without duplicating any data.",
+      "beforeRunMessage": "SHLLSHOCKD will prompt you for the source and target paths before creating the link.",
+      "afterRunMessage": "The symbolic link has been created. Programs that access the link will see the contents of the original folder.",
+      "psFunction": "create-a-shortcut-link"
+    },
+    {
+      "id": "files.folder_size",
+      "publicCommand": "See the true size of a folder",
+      "aliases": [
+        "How big is this folder",
+        "Folder disk usage",
+        "Real size of directory",
+        "Check folder storage",
+        "Folder taking up space",
+        "How much space does folder use"
+      ],
+      "category": "File System Secrets",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The File Cabinet",
+      "plainEnglishPurpose": "Calculates and displays the true disk size of a folder including all nested files and subdirectories.",
+      "beforeRunMessage": "SHLLSHOCKD will scan the folder and sum up all file sizes. No changes will be made.",
+      "afterRunMessage": "The total size is shown above. Compare this against your drive free space to decide what to clean up.",
+      "psFunction": "see-folder-true-size"
+    },
+    {
+      "id": "repair.graphics_driver",
+      "publicCommand": "Restart my graphics driver without rebooting",
+      "aliases": [
+        "Black screen flicker fix",
+        "GPU driver crash",
+        "Screen went black",
+        "Display driver reset",
+        "Graphics card stopped working",
+        "Win+Ctrl+Shift+B fix"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Sends the Windows display driver reset signal to recover from a frozen or crashed graphics driver without restarting.",
+      "beforeRunMessage": "Your screen will go dark for a few seconds during the graphics driver reset. This is normal and expected.",
+      "afterRunMessage": "If the display recovered, you are done. If it happened again soon after, consider updating or rolling back your GPU driver.",
+      "psFunction": "reset-graphics-driver"
+    },
+    {
+      "id": "repair.pause_updates",
+      "publicCommand": "Pause Windows updates for 35 days",
+      "aliases": [
+        "Stop Windows updates",
+        "Delay updates",
+        "Freeze Windows update",
+        "Put updates on hold",
+        "Prevent Windows updating",
+        "Block updates temporarily"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Pauses all Windows Update downloads and installs for 35 days to give you time to work without interruption.",
+      "beforeRunMessage": "SHLLSHOCKD will pause updates immediately. Remember to resume updates within 35 days to stay secure.",
+      "afterRunMessage": "Updates are paused for 35 days. Set a reminder to re-enable them before the pause expires.",
+      "psFunction": "pause-updates-now"
+    },
+    {
+      "id": "repair.uninstall_update",
+      "publicCommand": "Uninstall the latest Windows update",
+      "aliases": [
+        "Remove last update",
+        "Undo Windows update",
+        "Roll back last update",
+        "Uninstall bad update",
+        "Reverse Windows patch",
+        "Take back recent update"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Removes the most recently installed Windows update, which is useful when an update caused new problems.",
+      "beforeRunMessage": "SHLLSHOCKD will identify and remove the latest installed update. A restart is required to complete the process.",
+      "afterRunMessage": "The update has been removed. Pause updates to prevent it from reinstalling automatically.",
+      "psFunction": "uninstall-latest-update"
+    },
+    {
+      "id": "repair.sfc",
+      "publicCommand": "Repair corrupted Windows files",
+      "aliases": [
+        "System file checker",
+        "Fix Windows corruption",
+        "Corrupted system files",
+        "sfc scannow",
+        "Windows integrity check",
+        "Repair broken Windows files"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Runs the Windows System File Checker to scan for and repair corrupted or missing protected system files.",
+      "beforeRunMessage": "SHLLSHOCKD will run SFC as an administrator. The scan can take 10 to 20 minutes. Do not close the window.",
+      "afterRunMessage": "If repairs were made, restart your PC. If SFC found errors it could not fix, run the deep repair option next.",
+      "psFunction": "fix-windows-files"
+    },
+    {
+      "id": "repair.dism",
+      "publicCommand": "Deep repair Windows component store",
+      "aliases": [
+        "DISM repair",
+        "Fix Windows image",
+        "Component store corruption",
+        "Deep Windows repair",
+        "RestoreHealth",
+        "Windows update component fix"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Runs DISM to repair the Windows component store, which is required before SFC can fix certain deep corruptions.",
+      "beforeRunMessage": "DISM requires an internet connection and can take 20 to 30 minutes. Do not close the window or disconnect from the internet.",
+      "afterRunMessage": "After DISM completes, run the Repair corrupted Windows files command to apply the fixes.",
+      "psFunction": "fix-windows-image"
+    },
+    {
+      "id": "repair.drive_health",
+      "publicCommand": "Check my hard drive health",
+      "aliases": [
+        "Hard drive status",
+        "SSD health check",
+        "Drive failing",
+        "Disk health",
+        "SMART status",
+        "Is my drive dying"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Reads the SMART health data from your drives to give an early warning if a drive is showing signs of failure.",
+      "beforeRunMessage": "SHLLSHOCKD will query your drive's SMART data. No changes will be made.",
+      "afterRunMessage": "A status of Caution or Failure means you should back up immediately and plan to replace the drive.",
+      "psFunction": "check-my-hard-drive"
+    },
+    {
+      "id": "repair.ram_test",
+      "publicCommand": "Test my RAM for errors",
+      "aliases": [
+        "Memory test",
+        "RAM check",
+        "Test memory",
+        "Memory diagnostic",
+        "RAM errors",
+        "Check RAM sticks"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Schedules the Windows Memory Diagnostic to run on next restart and test your RAM for hardware errors.",
+      "beforeRunMessage": "The RAM test runs on your next restart and takes about 10 to 15 minutes. Save all your work before proceeding.",
+      "afterRunMessage": "Restart your PC now to begin the test. Results will appear after Windows loads back up.",
+      "psFunction": "test-my-ram"
+    },
+    {
+      "id": "repair.reliability",
+      "publicCommand": "Show my PC crash and error history",
+      "aliases": [
+        "Crash log",
+        "Error history",
+        "Reliability monitor",
+        "PC problem history",
+        "What errors happened",
+        "See past crashes"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Opens the Windows Reliability Monitor showing a timeline of crashes, errors, and warnings to help identify patterns.",
+      "beforeRunMessage": "SHLLSHOCKD will open your reliability history. No changes will be made.",
+      "afterRunMessage": "Look for repeating red X events. A pattern on specific days or after specific apps points to the cause.",
+      "psFunction": "see-reliability-history"
+    },
+    {
+      "id": "repair.crash_cause",
+      "publicCommand": "Find out why Windows crashed",
+      "aliases": [
+        "BSOD reason",
+        "Blue screen cause",
+        "Why did Windows crash",
+        "Crash dump analysis",
+        "Minidump reader",
+        "Read crash log"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Reads the Windows crash dump file and extracts the error code and driver name that caused the blue screen.",
+      "beforeRunMessage": "SHLLSHOCKD will read the most recent crash dump. No changes will be made.",
+      "afterRunMessage": "The driver or error code shown is your starting point. Search for that driver name to find a known fix.",
+      "psFunction": "see-crash-cause"
+    },
+    {
+      "id": "repair.restore_point",
+      "publicCommand": "Create a restore point right now",
+      "aliases": [
+        "Save system state",
+        "Make restore point",
+        "Backup before change",
+        "Snapshot Windows",
+        "System checkpoint",
+        "Create recovery point"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Creates an immediate System Restore snapshot so you can roll back Windows settings if something goes wrong.",
+      "beforeRunMessage": "SHLLSHOCKD will create a restore point now. This takes about a minute and requires some free disk space.",
+      "afterRunMessage": "Restore point created. If something breaks later, use Roll Windows back to a restore point to recover.",
+      "psFunction": "create-restore-point"
+    },
+    {
+      "id": "repair.system_restore",
+      "publicCommand": "Roll Windows back to a restore point",
+      "aliases": [
+        "Go back to before",
+        "Undo Windows changes",
+        "System restore",
+        "Revert to earlier state",
+        "Use restore point",
+        "Restore from checkpoint"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Rolls Windows back to a previous restore point, undoing recent system changes, driver installs, and app installs.",
+      "beforeRunMessage": "System Restore will revert Windows settings to an earlier point. Installed apps added after that point will be removed. Personal files are not affected.",
+      "afterRunMessage": "Restore complete. Your PC will restart. Check that the issue is resolved before reinstalling any apps.",
+      "psFunction": "go-back-to-restore-point"
+    },
+    {
+      "id": "repair.boot_record",
+      "publicCommand": "Fix the boot record",
+      "aliases": [
+        "Windows won't boot",
+        "Fix MBR",
+        "Fix boot",
+        "Startup repair",
+        "Boot sector fix",
+        "PC wont start"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Rebuilds the Windows boot record to fix a PC that fails to start or shows a missing operating system error.",
+      "beforeRunMessage": "This repair must run from the Windows Recovery Environment. SHLLSHOCKD will guide you through the steps.",
+      "afterRunMessage": "If the boot record was repaired, restart your PC normally. If the error persists, a deeper repair or reinstall may be needed.",
+      "psFunction": "fix-boot-record"
+    },
+    {
+      "id": "repair.uninstall_kb",
+      "publicCommand": "Remove a specific Windows update by KB number",
+      "aliases": [
+        "Remove KB update",
+        "Uninstall specific patch",
+        "Remove known bad update",
+        "Delete KB by number",
+        "Uninstall Windows patch",
+        "Remove security update by number"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Removes a specific Windows update identified by its KB number, useful when a particular patch is known to cause problems.",
+      "beforeRunMessage": "SHLLSHOCKD will ask you for the KB number before proceeding. A restart is required after removal.",
+      "afterRunMessage": "The specified update has been removed. Pause updates to prevent it from reinstalling automatically.",
+      "psFunction": "uninstall-bad-update"
+    },
+    {
+      "id": "repair.problem_steps",
+      "publicCommand": "Record the steps to reproduce a problem",
+      "aliases": [
+        "Screen recorder for bugs",
+        "Steps recorder",
+        "Capture problem steps",
+        "Bug recording",
+        "Record what I did",
+        "Problem Steps Recorder"
+      ],
+      "category": "Recovery & Repair",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Opens the Windows Steps Recorder to capture a screenshot and action log of everything you do to reproduce a problem.",
+      "beforeRunMessage": "Steps Recorder will open. Click Record, reproduce the problem, then click Stop. A report file will be saved.",
+      "afterRunMessage": "Share the saved report with support or IT so they can see exactly what happened step by step.",
+      "psFunction": "record-my-problem"
+    },
+    {
+      "id": "printers.clear_queue",
+      "publicCommand": "Clear a stuck print queue",
+      "aliases": [
+        "Print job stuck",
+        "Print queue frozen",
+        "Delete stuck print job",
+        "Print queue not clearing",
+        "Printing won't start",
+        "Jobs stuck in queue"
+      ],
+      "category": "Printers",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Stops the print spooler, clears all stuck jobs from the queue, and restarts printing so new jobs can process.",
+      "beforeRunMessage": "SHLLSHOCKD will stop the spooler, delete stuck jobs, and restart printing. All pending print jobs will be cancelled.",
+      "afterRunMessage": "The print queue is now clear. Resend any documents you still need to print.",
+      "psFunction": "clear-stuck-print-queue"
+    },
+    {
+      "id": "printers.restart_spooler",
+      "publicCommand": "Restart the print spooler",
+      "aliases": [
+        "Print service restart",
+        "Spooler restart",
+        "Print service stopped",
+        "Restart printing service",
+        "Print spooler service",
+        "Fix print service"
+      ],
+      "category": "Printers",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Restarts the Windows Print Spooler service to recover from a spooler crash or frozen print system.",
+      "beforeRunMessage": "SHLLSHOCKD will stop and restart the spooler service. Printing will be unavailable for a few seconds.",
+      "afterRunMessage": "The spooler is running again. Try printing your document now.",
+      "psFunction": "restart-print-spooler"
+    },
+    {
+      "id": "printers.pdf",
+      "publicCommand": "Enable Print to PDF",
+      "aliases": [
+        "Print as PDF",
+        "Save as PDF from printer",
+        "Microsoft Print to PDF",
+        "PDF printer missing",
+        "Print to PDF not showing",
+        "Install PDF printer"
+      ],
+      "category": "Printers",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Re-enables the Microsoft Print to PDF printer if it has disappeared from your list of available printers.",
+      "beforeRunMessage": "SHLLSHOCKD will restore the Print to PDF option in your printer list.",
+      "afterRunMessage": "Print to PDF is now available. Select it as your printer in any app to save a document as a PDF file.",
+      "psFunction": "print-to-pdf"
+    },
+    {
+      "id": "printers.ghost",
+      "publicCommand": "Remove a ghost printer",
+      "aliases": [
+        "Delete old printer",
+        "Printer no longer exists",
+        "Remove phantom printer",
+        "Old printer still showing",
+        "Printer not connected still listed",
+        "Remove unused printer"
+      ],
+      "category": "Printers",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Lists all installed printers including hidden ones and lets you remove printers for devices that are no longer connected.",
+      "beforeRunMessage": "SHLLSHOCKD will show all installed printers. You choose which ones to remove.",
+      "afterRunMessage": "Selected printers have been removed. Your printer list should now only show devices you actually have.",
+      "psFunction": "remove-ghost-printer"
+    },
+    {
+      "id": "printers.ip",
+      "publicCommand": "Find my printer's IP address",
+      "aliases": [
+        "Printer IP lookup",
+        "Network printer address",
+        "What IP is my printer",
+        "Printer network address",
+        "Find printer on network",
+        "Locate printer IP"
+      ],
+      "category": "Printers",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Discovers the IP address of your networked printer so you can access its web interface or configure it manually.",
+      "beforeRunMessage": "SHLLSHOCKD will scan your network and printer ports to identify the printer's IP address. No changes will be made.",
+      "afterRunMessage": "The printer's IP address is shown above. You can use it to access the printer's settings page in your browser.",
+      "psFunction": "find-printer-ip"
+    },
+    {
+      "id": "printers.default",
+      "publicCommand": "Set my default printer",
+      "aliases": [
+        "Change default printer",
+        "Always print to this printer",
+        "Set main printer",
+        "Stop Windows changing my printer",
+        "Fix default printer keeps changing",
+        "Choose which printer to use"
+      ],
+      "category": "Printers",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Sets a specific printer as your default and disables the Windows feature that automatically changes the default printer.",
+      "beforeRunMessage": "SHLLSHOCKD will show your installed printers and let you pick your default.",
+      "afterRunMessage": "Your default printer is now set and locked. Windows will no longer automatically switch it based on location.",
+      "psFunction": "set-default-printer"
+    },
+    {
+      "id": "productivity.god_mode",
+      "publicCommand": "Open God Mode — every Windows setting in one place",
+      "aliases": [
+        "All Windows settings",
+        "God mode folder",
+        "Every setting in one place",
+        "Master control panel",
+        "All control panel items",
+        "Super settings folder"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Creates and opens the God Mode folder that shows every Windows setting and control panel item in a single searchable list.",
+      "beforeRunMessage": "SHLLSHOCKD will create the God Mode folder on your Desktop and open it.",
+      "afterRunMessage": "The God Mode folder is now on your Desktop. Use the search box at the top to find any setting instantly.",
+      "psFunction": "open-god-mode"
+    },
+    {
+      "id": "productivity.clipboard",
+      "publicCommand": "Enable clipboard history",
+      "aliases": [
+        "Clipboard manager",
+        "See clipboard history",
+        "Win+V clipboard",
+        "Multiple clipboard items",
+        "Paste history",
+        "Save multiple clipboard items"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables Windows clipboard history so you can press Win+V to see and paste from the last 25 things you copied.",
+      "beforeRunMessage": "SHLLSHOCKD will enable clipboard history. Press Win+V after this to see your clipboard history.",
+      "afterRunMessage": "Clipboard history is now on. Press Win+V anytime to pick from recently copied items.",
+      "psFunction": "see-clipboard-history"
+    },
+    {
+      "id": "productivity.sandbox",
+      "publicCommand": "Open Windows Sandbox",
+      "aliases": [
+        "Isolated environment",
+        "Safe test environment",
+        "Windows Sandbox",
+        "Sandboxed Windows",
+        "Temporary Windows",
+        "Test software safely"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables and opens Windows Sandbox, a disposable temporary Windows environment that resets completely when closed.",
+      "beforeRunMessage": "Windows Sandbox requires virtualization features. SHLLSHOCKD will enable it if not already on. A restart may be required.",
+      "afterRunMessage": "Sandbox is open. Install or test anything inside it — everything disappears when you close the window.",
+      "psFunction": "start-windows-sandbox"
+    },
+    {
+      "id": "productivity.record_screen",
+      "publicCommand": "Record my screen",
+      "aliases": [
+        "Screen recording",
+        "Capture screen video",
+        "Record desktop",
+        "Screen capture video",
+        "Game bar recording",
+        "Record what's on my screen"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Opens the Windows screen recording tool so you can capture video of your screen with one keyboard shortcut.",
+      "beforeRunMessage": "SHLLSHOCKD will open the screen recorder. Press Win+Alt+R to start and stop recording.",
+      "afterRunMessage": "Your recording is saved to the Videos\\Captures folder. Check there for your file.",
+      "psFunction": "record-my-screen"
+    },
+    {
+      "id": "productivity.focus",
+      "publicCommand": "Start a focus session and block notifications",
+      "aliases": [
+        "Do not disturb",
+        "Block notifications",
+        "Focus mode",
+        "Stop pop-ups",
+        "Quiet hours",
+        "Silence notifications"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables Windows Focus Assist to suppress notifications and pop-ups so you can work without interruptions.",
+      "beforeRunMessage": "SHLLSHOCKD will turn on Focus mode to silence notifications. You can turn it off at any time from the system tray.",
+      "afterRunMessage": "Focus mode is active. Notifications are silenced. Click the Focus icon in the system tray to end the session.",
+      "psFunction": "set-focus-mode"
+    },
+    {
+      "id": "productivity.emoji",
+      "publicCommand": "Open the emoji picker",
+      "aliases": [
+        "Emoji keyboard",
+        "Type emoji",
+        "Emoji shortcut",
+        "Special characters",
+        "Symbols keyboard",
+        "Win+period emoji"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Opens the Windows emoji and special character picker so you can insert emoji anywhere you can type text.",
+      "beforeRunMessage": "SHLLSHOCKD will open the emoji picker. You can also open it anytime with Win+Period.",
+      "afterRunMessage": "Click any emoji to insert it. Use the search bar at the top to find specific emoji by name.",
+      "psFunction": "open-emoji-picker"
+    },
+    {
+      "id": "productivity.dictate",
+      "publicCommand": "Type by speaking",
+      "aliases": [
+        "Voice typing",
+        "Speech to text",
+        "Dictation",
+        "Voice input",
+        "Talk to type",
+        "Microphone typing"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Activates Windows voice typing so you can dictate text into any text field by speaking into your microphone.",
+      "beforeRunMessage": "SHLLSHOCKD will enable voice typing. Press Win+H anywhere to start dictating.",
+      "afterRunMessage": "Voice typing is ready. Click in any text field and press Win+H to start speaking. Press it again to stop.",
+      "psFunction": "dictate-text-anywhere"
+    },
+    {
+      "id": "productivity.auto_dark",
+      "publicCommand": "Schedule automatic dark and light mode",
+      "aliases": [
+        "Auto dark mode",
+        "Scheduled theme switch",
+        "Dark mode at night",
+        "Light mode by day",
+        "Automatic theme",
+        "Day night mode schedule"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Sets up a scheduled task to automatically switch between light mode and dark mode at times you choose.",
+      "beforeRunMessage": "SHLLSHOCKD will ask for your preferred light mode and dark mode switch times before creating the schedule.",
+      "afterRunMessage": "The schedule is set. Windows will switch themes automatically at the times you specified each day.",
+      "psFunction": "set-auto-dark-mode-schedule"
+    },
+    {
+      "id": "productivity.nearby_share",
+      "publicCommand": "Enable nearby file sharing",
+      "aliases": [
+        "Share files nearby",
+        "Nearby sharing",
+        "Wireless file transfer",
+        "Send files to nearby PC",
+        "AirDrop for Windows",
+        "Share without USB"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables the Windows Nearby Sharing feature so you can wirelessly transfer files between Windows PCs nearby.",
+      "beforeRunMessage": "SHLLSHOCKD will turn on Nearby Sharing. Both PCs must have this enabled to send and receive files.",
+      "afterRunMessage": "Nearby Sharing is on. Right-click any file and select Share to send it to a nearby Windows PC.",
+      "psFunction": "nearby-share-on"
+    },
+    {
+      "id": "productivity.schedule_shutdown",
+      "publicCommand": "Schedule a shutdown",
+      "aliases": [
+        "Shutdown timer",
+        "Turn off PC at time",
+        "Auto shutdown",
+        "Timed shutdown",
+        "Shutdown in X minutes",
+        "Power off automatically"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Schedules your PC to shut down automatically after a specified number of minutes.",
+      "beforeRunMessage": "SHLLSHOCKD will ask how many minutes until shutdown before scheduling it.",
+      "afterRunMessage": "Shutdown is scheduled. Use Cancel a scheduled shutdown if you change your mind.",
+      "psFunction": "schedule-shutdown"
+    },
+    {
+      "id": "productivity.cancel_shutdown",
+      "publicCommand": "Cancel a scheduled shutdown",
+      "aliases": [
+        "Stop shutdown timer",
+        "Abort shutdown",
+        "Cancel auto off",
+        "Stop timed shutdown",
+        "Undo shutdown schedule",
+        "Keep PC on"
+      ],
+      "category": "Productivity Gems",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Cancels a previously scheduled shutdown so your PC stays on.",
+      "beforeRunMessage": "SHLLSHOCKD will cancel any pending shutdown timer immediately.",
+      "afterRunMessage": "Shutdown cancelled. Your PC will remain on until you shut it down manually.",
+      "psFunction": "cancel-shutdown"
+    },
+    {
+      "id": "gaming.game_mode",
+      "publicCommand": "Enable Game Mode",
+      "aliases": [
+        "Gaming mode",
+        "Boost games",
+        "Game performance mode",
+        "Turn on Game Mode",
+        "Prioritize games",
+        "Windows Game Mode"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables Windows Game Mode to prioritize CPU and GPU resources for your game and reduce background activity during play.",
+      "beforeRunMessage": "SHLLSHOCKD will enable Game Mode system-wide. It activates automatically when you launch a game.",
+      "afterRunMessage": "Game Mode is on. Your games should get more consistent frame rates and fewer background interruptions.",
+      "psFunction": "turn-on-game-mode"
+    },
+    {
+      "id": "gaming.stop_dvr",
+      "publicCommand": "Disable background game recording",
+      "aliases": [
+        "Stop game DVR",
+        "Disable Xbox recording",
+        "Stop background recording",
+        "Game bar recording off",
+        "Disable game clips",
+        "Stop automatic game capture"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Disables the Xbox Game Bar background recording feature that can use CPU and disk resources while you play.",
+      "beforeRunMessage": "SHLLSHOCKD will disable background DVR recording. You can still record manually with Win+Alt+R.",
+      "afterRunMessage": "Background game recording is off. This frees up resources that were being used continuously during gameplay.",
+      "psFunction": "stop-background-dvr"
+    },
+    {
+      "id": "gaming.gpu_scheduling",
+      "publicCommand": "Enable hardware GPU scheduling",
+      "aliases": [
+        "HAGS",
+        "Hardware GPU scheduling",
+        "GPU performance boost",
+        "Reduce GPU latency",
+        "Hardware accelerated GPU",
+        "Enable HAGS"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables Hardware Accelerated GPU Scheduling to reduce latency and improve frame times in compatible games.",
+      "beforeRunMessage": "SHLLSHOCKD will enable GPU scheduling. A restart is required for the change to take effect.",
+      "afterRunMessage": "GPU scheduling is enabled. Restart your PC and test your games for improved frame time consistency.",
+      "psFunction": "enable-gpu-scheduling"
+    },
+    {
+      "id": "gaming.gpu_preference",
+      "publicCommand": "Force an app to use the dedicated GPU",
+      "aliases": [
+        "Use discrete GPU",
+        "Force high performance GPU",
+        "App not using GPU",
+        "Set GPU for app",
+        "Use dedicated graphics",
+        "Switch app to GPU"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Sets a specific application to always use your dedicated GPU instead of the low-power integrated graphics chip.",
+      "beforeRunMessage": "SHLLSHOCKD will ask which app to configure and then set it to high performance GPU mode.",
+      "afterRunMessage": "The selected app is now assigned to your dedicated GPU. Restart the app to apply the change.",
+      "psFunction": "set-gpu-to-high-performance"
+    },
+    {
+      "id": "gaming.xbox_services",
+      "publicCommand": "Disable Xbox background services",
+      "aliases": [
+        "Stop Xbox services",
+        "Kill Xbox background",
+        "Disable Xbox live",
+        "Remove Xbox overhead",
+        "Stop gaming overlay services",
+        "Xbox background processes"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Disables non-essential Xbox background services that run even when you are not gaming and consume system resources.",
+      "beforeRunMessage": "SHLLSHOCKD will disable Xbox telemetry and background services. Game Bar functionality may be reduced.",
+      "afterRunMessage": "Xbox background services are disabled. This frees RAM and CPU for games and other applications.",
+      "psFunction": "stop-xbox-interference"
+    },
+    {
+      "id": "gaming.vrr",
+      "publicCommand": "Enable Variable Refresh Rate",
+      "aliases": [
+        "VRR enable",
+        "FreeSync Windows",
+        "Adaptive sync",
+        "Enable VRR",
+        "Variable sync rate",
+        "Screen tear fix VRR"
+      ],
+      "category": "Gaming & Performance",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Enables Variable Refresh Rate support in Windows so compatible monitors can sync their refresh rate to your GPU output.",
+      "beforeRunMessage": "SHLLSHOCKD will enable VRR in Windows display settings. Your monitor must also support VRR (FreeSync or G-Sync).",
+      "afterRunMessage": "VRR is enabled. Screen tearing should be reduced or eliminated in supported games and apps.",
+      "psFunction": "enable-variable-refresh-rate"
+    },
+    {
+      "id": "time.sync_clock",
+      "publicCommand": "Sync my clock to the correct time",
+      "aliases": [
+        "Fix wrong time",
+        "Clock is wrong",
+        "Sync time",
+        "Correct the clock",
+        "Windows time wrong",
+        "Time out of sync"
+      ],
+      "category": "Time & Locale",
+      "commandClass": "recovery",
+      "riskLevel": "low",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Forces Windows to sync immediately with the internet time server to correct a clock showing the wrong time.",
+      "beforeRunMessage": "SHLLSHOCKD will force a time sync with the Windows time server. Your clock will be corrected in seconds.",
+      "afterRunMessage": "Clock synced. If the time drifts again quickly, your CMOS battery may need replacement.",
+      "psFunction": "fix-my-clock"
+    },
+    {
+      "id": "time.sync_status",
+      "publicCommand": "Check time sync status",
+      "aliases": [
+        "Time sync history",
+        "When did clock sync",
+        "Last time sync",
+        "NTP status",
+        "Time server status",
+        "Check clock sync"
+      ],
+      "category": "Time & Locale",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Shows the history and status of Windows time synchronization including the last sync time and any sync errors.",
+      "beforeRunMessage": "SHLLSHOCKD will display your time sync history and current NTP status. No changes will be made.",
+      "afterRunMessage": "If the last successful sync was days ago or shows errors, run Sync my clock to the correct time to fix it.",
+      "psFunction": "see-time-sync-history"
+    },
+    {
+      "id": "time.date_format",
+      "publicCommand": "Change the date display format",
+      "aliases": [
+        "Date format change",
+        "MM DD YY format",
+        "DD MM YY format",
+        "Change how date looks",
+        "Date display settings",
+        "Reformat date"
+      ],
+      "category": "Time & Locale",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Opens the Windows region settings so you can change how dates, times, and numbers are formatted across the system.",
+      "beforeRunMessage": "SHLLSHOCKD will open the region format settings. You can change the format without changing your language.",
+      "afterRunMessage": "Date and time format updated. The new format will appear in Explorer, the taskbar clock, and most apps.",
+      "psFunction": "change-date-format"
+    },
+    {
+      "id": "time.dual_boot_clock",
+      "publicCommand": "Fix the clock after dual booting with Linux",
+      "aliases": [
+        "Linux Windows clock wrong",
+        "Dual boot time off",
+        "UTC clock issue",
+        "Linux messes up clock",
+        "RTC UTC fix",
+        "Time wrong after using Linux"
+      ],
+      "category": "Time & Locale",
+      "commandClass": "recovery",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Fixes the clock conflict that happens when dual booting Windows and Linux by setting Windows to use UTC for the hardware clock.",
+      "beforeRunMessage": "SHLLSHOCKD will apply a registry change to how Windows reads the hardware clock. No restart is needed immediately.",
+      "afterRunMessage": "The fix is applied. Sync your clock once after this and the time should stay correct after switching between OS.",
+      "psFunction": "fix-clock-after-dual-boot"
+    },
+    {
+      "id": "time.timezone",
+      "publicCommand": "Change my timezone",
+      "aliases": [
+        "Set timezone",
+        "Wrong timezone",
+        "Change time zone",
+        "Set my location time",
+        "Move timezone",
+        "Fix timezone"
+      ],
+      "category": "Time & Locale",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Hidden Gems",
+      "plainEnglishPurpose": "Opens Windows timezone settings so you can select the correct timezone for your current location.",
+      "beforeRunMessage": "SHLLSHOCKD will open the timezone selector. Picking the correct zone also corrects your system clock.",
+      "afterRunMessage": "Timezone updated. Your clock should now show the correct local time.",
+      "psFunction": "set-my-timezone"
+    },
+    {
+      "id": "boot.safe_mode",
+      "publicCommand": "Boot into Safe Mode",
+      "aliases": [
+        "Start in Safe Mode",
+        "Minimal startup",
+        "Safe Mode boot",
+        "Troubleshoot startup",
+        "Safe Mode Windows",
+        "Boot minimal"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Configures Windows to boot into Safe Mode on the next restart, loading only essential drivers and services.",
+      "beforeRunMessage": "Your PC will restart and boot into Safe Mode. To exit Safe Mode, restart normally and it will not re-enter Safe Mode.",
+      "afterRunMessage": "Safe Mode is active. If your problem does not appear here, a third-party driver or software is the likely cause.",
+      "psFunction": "boot-into-safe-mode"
+    },
+    {
+      "id": "boot.recovery",
+      "publicCommand": "Boot into the Windows recovery environment",
+      "aliases": [
+        "WinRE boot",
+        "Recovery environment",
+        "Boot to recovery",
+        "Windows RE",
+        "Advanced startup",
+        "Recovery mode"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Restarts your PC directly into the Windows Recovery Environment for advanced repair and troubleshooting options.",
+      "beforeRunMessage": "Your PC will restart immediately into recovery mode. Save all open work before continuing.",
+      "afterRunMessage": "Select Troubleshoot from the recovery menu to access startup repair, restore points, and command prompt tools.",
+      "psFunction": "boot-into-recovery"
+    },
+    {
+      "id": "boot.slow_boot",
+      "publicCommand": "Find what is slowing my startup",
+      "aliases": [
+        "Slow startup apps",
+        "Boot time analysis",
+        "What causes slow boot",
+        "Startup program delay",
+        "Measure boot speed",
+        "Slow login screen"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Reads the Windows event log to measure how long each startup phase took and identify what is adding delay.",
+      "beforeRunMessage": "SHLLSHOCKD will analyze your last boot log. No changes will be made.",
+      "afterRunMessage": "The longest phase or highest-delay startup item is your target. Use the startup manager to disable it.",
+      "psFunction": "see-what-slows-my-boot"
+    },
+    {
+      "id": "boot.bad_drivers",
+      "publicCommand": "Find problem drivers",
+      "aliases": [
+        "Driver errors",
+        "Broken drivers",
+        "Driver issues",
+        "Find faulty drivers",
+        "Bad driver list",
+        "Driver warning"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Scans Device Manager for drivers flagged with errors or warnings so you know which ones need attention.",
+      "beforeRunMessage": "SHLLSHOCKD will scan Device Manager for problem devices and drivers. No changes will be made.",
+      "afterRunMessage": "Any driver showing an error code needs to be updated or reinstalled. The error code tells you exactly what is wrong.",
+      "psFunction": "find-bad-drivers"
+    },
+    {
+      "id": "boot.no_auto_restart",
+      "publicCommand": "Stop Windows from restarting automatically after a crash",
+      "aliases": [
+        "Keep blue screen on screen",
+        "Don't auto restart crash",
+        "See BSOD error",
+        "Stop restarting on crash",
+        "Read blue screen",
+        "Disable automatic restart crash"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Disables the automatic restart after a blue screen so you can read the stop code before the PC reboots.",
+      "beforeRunMessage": "SHLLSHOCKD will disable auto-restart on crash. The next blue screen will stay on screen until you manually restart.",
+      "afterRunMessage": "Auto-restart is off. When you see the blue screen, note the stop code before restarting.",
+      "psFunction": "stop-automatic-restart"
+    },
+    {
+      "id": "boot.old_boot_entries",
+      "publicCommand": "Remove old entries from the boot menu",
+      "aliases": [
+        "Clean boot menu",
+        "Delete old OS from boot",
+        "Remove dual boot entry",
+        "Old Windows in boot menu",
+        "Boot menu cleanup",
+        "Remove stale boot option"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Lists all entries in the boot menu and lets you remove outdated or orphaned entries from old OS installations.",
+      "beforeRunMessage": "SHLLSHOCKD will show all current boot entries. You choose which ones to remove — the active entry is protected.",
+      "afterRunMessage": "Selected boot entries have been removed. Your boot menu will be cleaner on next startup.",
+      "psFunction": "remove-old-boot-entries"
+    },
+    {
+      "id": "boot.clean_boot",
+      "publicCommand": "Start Windows with only Microsoft services",
+      "aliases": [
+        "Clean boot",
+        "Disable third party services",
+        "Minimal services startup",
+        "Isolate startup problem",
+        "Test without third party apps",
+        "Disable non-Microsoft services"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Disables all non-Microsoft services and startup apps so you can test whether a third-party program is causing your issue.",
+      "beforeRunMessage": "SHLLSHOCKD will configure a clean boot. Restart your PC after this to enter the minimal environment.",
+      "afterRunMessage": "If your problem is gone in clean boot, a third-party service is the cause. Re-enable services one by one to find it.",
+      "psFunction": "test-startup-without-apps"
+    },
+    {
+      "id": "boot.running_services",
+      "publicCommand": "Show all running Windows services",
+      "aliases": [
+        "List services",
+        "See all services",
+        "What services are running",
+        "Windows services list",
+        "Service manager",
+        "View running services"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Displays a list of all currently running Windows services with their name, status, and startup type.",
+      "beforeRunMessage": "SHLLSHOCKD will list all running services. No changes will be made.",
+      "afterRunMessage": "Review the list for unfamiliar services. Services you do not recognize are worth researching before disabling.",
+      "psFunction": "see-all-running-services"
+    },
+    {
+      "id": "boot.disable_service",
+      "publicCommand": "Permanently disable a Windows service",
+      "aliases": [
+        "Stop a service",
+        "Disable service permanently",
+        "Turn off Windows service",
+        "Kill background service",
+        "Service disable",
+        "Stop service from starting"
+      ],
+      "category": "Startup & Boot",
+      "commandClass": "action",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Permanently disables a specified Windows service so it no longer starts automatically or runs in the background.",
+      "beforeRunMessage": "SHLLSHOCKD will ask for the service name before disabling it. Disabling the wrong service can cause instability.",
+      "afterRunMessage": "Service disabled. It will no longer start on boot. You can re-enable it through Services manager if needed.",
+      "psFunction": "disable-a-service"
+    },
+    {
+      "id": "nuclear.reset_keep",
+      "publicCommand": "Reset Windows but keep my files",
+      "aliases": [
+        "Reinstall Windows keep files",
+        "Fresh start keep documents",
+        "Reset PC keep files",
+        "Windows reset preserve data",
+        "Repair install keep files",
+        "Clean Windows keep documents"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "recovery",
+      "riskLevel": "destructive",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Reinstalls Windows while keeping your personal files, removing all installed applications and resetting system settings.",
+      "beforeRunMessage": "This will reinstall Windows. All installed apps will be removed. Your personal files in Documents, Pictures, and Desktop will be kept.",
+      "afterRunMessage": "Windows has been reinstalled. Reinstall your applications and check that your files are intact.",
+      "psFunction": "reset-keep-my-files",
+      "warningMessage": "This will reinstall Windows and remove all installed applications. Your personal files will be kept but all apps must be reinstalled."
+    },
+    {
+      "id": "nuclear.reset_wipe",
+      "publicCommand": "Full factory reset — wipe everything",
+      "aliases": [
+        "Factory reset PC",
+        "Wipe everything",
+        "Complete reset",
+        "Remove all files reset",
+        "Sell PC wipe",
+        "Clean everything off PC"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "recovery",
+      "riskLevel": "destructive",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Performs a complete factory reset that erases all files, apps, and settings and reinstalls a fresh copy of Windows.",
+      "beforeRunMessage": "This will permanently erase everything on this PC including all files, apps, and accounts. Back up everything before proceeding.",
+      "afterRunMessage": "Factory reset complete. Windows is freshly installed. Set up the PC as if it were new.",
+      "psFunction": "reset-remove-everything",
+      "warningMessage": "This will permanently erase all files, apps, and settings. This cannot be undone. Back up everything before proceeding."
+    },
+    {
+      "id": "nuclear.recovery_usb",
+      "publicCommand": "Create a Windows recovery USB drive",
+      "aliases": [
+        "Make recovery drive",
+        "Recovery USB",
+        "Windows repair USB",
+        "Bootable recovery drive",
+        "Create rescue USB",
+        "Emergency USB drive"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Creates a bootable USB recovery drive that can start and repair Windows even if the PC cannot boot normally.",
+      "beforeRunMessage": "You need a USB drive with at least 16GB of free space. All data on the USB will be erased during this process.",
+      "afterRunMessage": "Recovery USB created. Store it somewhere safe. Use it to boot and repair your PC if Windows fails to start.",
+      "psFunction": "create-recovery-usb"
+    },
+    {
+      "id": "nuclear.backup_now",
+      "publicCommand": "Back up everything right now",
+      "aliases": [
+        "Backup PC now",
+        "Create backup",
+        "Save my files",
+        "Backup immediately",
+        "Emergency backup",
+        "Backup all files"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Immediately backs up your user files to an external drive or network location using Windows Backup.",
+      "beforeRunMessage": "SHLLSHOCKD will open Windows Backup. Connect your external drive before proceeding if backing up locally.",
+      "afterRunMessage": "Backup complete. Verify the backup destination contains your files before proceeding with any major changes.",
+      "psFunction": "back-up-everything-now"
+    },
+    {
+      "id": "nuclear.undo_update",
+      "publicCommand": "Roll back to the previous Windows version",
+      "aliases": [
+        "Undo major update",
+        "Go back to old Windows",
+        "Previous Windows version",
+        "Revert Windows upgrade",
+        "Uninstall Windows upgrade",
+        "Return to earlier Windows"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "recovery",
+      "riskLevel": "high",
+      "requiresAdmin": false,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Uses the Windows Go Back feature to revert to the previous major version of Windows that was installed before the last upgrade.",
+      "beforeRunMessage": "The Go Back option is only available for 10 days after a major update. Your apps and files are preserved.",
+      "afterRunMessage": "Rollback complete. Pause updates to prevent the same upgrade from installing again automatically.",
+      "psFunction": "undo-last-major-update"
+    },
+    {
+      "id": "nuclear.recovery_options",
+      "publicCommand": "Show all Windows recovery options",
+      "aliases": [
+        "What recovery options exist",
+        "Recovery menu",
+        "All repair options",
+        "Windows recovery list",
+        "See what I can do to fix Windows",
+        "Repair options available"
+      ],
+      "category": "Nuclear Options",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Lists all available Windows recovery and repair options with an explanation of what each one does and when to use it.",
+      "beforeRunMessage": "SHLLSHOCKD will display all recovery options. No changes will be made.",
+      "afterRunMessage": "Pick the least destructive option first. Work down the list only if the gentler options do not resolve the issue.",
+      "psFunction": "see-recovery-options"
+    },
+    {
+      "id": "disk.copy_folder",
+      "publicCommand": "Copy a large folder without crashing",
+      "aliases": [
+        "Copy big folder",
+        "Transfer large files",
+        "Robocopy folder",
+        "Move files reliably",
+        "Large file transfer",
+        "Copy files without error"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Uses robocopy to transfer a large folder reliably with automatic retry on errors and progress reporting.",
+      "beforeRunMessage": "SHLLSHOCKD will ask for the source and destination paths then begin the transfer. It will retry automatically if files are in use.",
+      "afterRunMessage": "Transfer complete. Check the summary log for any files that could not be copied.",
+      "psFunction": "copy-folder"
+    },
+    {
+      "id": "disk.sync_folders",
+      "publicCommand": "Sync a backup folder — copy only what changed",
+      "aliases": [
+        "Mirror folder",
+        "Incremental backup",
+        "Sync two folders",
+        "Copy only new files",
+        "Delta copy",
+        "Update backup folder"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "action",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Syncs a source folder to a destination by copying only new and changed files, making backups fast and efficient.",
+      "beforeRunMessage": "SHLLSHOCKD will ask for the source and destination paths. Only changed files will be copied. Nothing is deleted from the destination.",
+      "afterRunMessage": "Sync complete. The destination folder now matches the source for all new and changed files.",
+      "psFunction": "sync-folders"
+    },
+    {
+      "id": "disk.rename_batch",
+      "publicCommand": "Rename hundreds of files at once",
+      "aliases": [
+        "Batch rename files",
+        "Rename multiple files",
+        "Mass rename",
+        "Bulk file rename",
+        "Rename all files in folder",
+        "Auto rename files"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Renames all files in a folder using a pattern you define, such as adding a prefix, replacing text, or adding numbering.",
+      "beforeRunMessage": "SHLLSHOCKD will preview the renamed files before making any changes. You confirm before the rename is applied.",
+      "afterRunMessage": "Files renamed. The preview showed exactly what changed. Undo is available in Explorer if needed.",
+      "psFunction": "rename-batch"
+    },
+    {
+      "id": "disk.wipe_drive",
+      "publicCommand": "Completely erase and format a drive",
+      "aliases": [
+        "Format drive",
+        "Wipe drive clean",
+        "Erase hard drive",
+        "Secure erase drive",
+        "Zero out drive",
+        "Full drive format"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "action",
+      "riskLevel": "destructive",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Completely erases and reformats a selected drive, destroying all data on it permanently.",
+      "beforeRunMessage": "SHLLSHOCKD will ask you to confirm the drive letter twice before erasing anything. Verify the drive letter carefully.",
+      "afterRunMessage": "Drive wiped and formatted. It is ready for use. The previous data is unrecoverable.",
+      "psFunction": "wipe-drive-clean",
+      "warningMessage": "This will permanently destroy all data on the selected drive. This cannot be undone. Confirm the drive letter carefully."
+    },
+    {
+      "id": "disk.show_disks",
+      "publicCommand": "Show all connected drives including hidden ones",
+      "aliases": [
+        "List all drives",
+        "See all disks",
+        "Find hidden drives",
+        "Disk list",
+        "Connected storage",
+        "Show all storage devices"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "decision",
+      "riskLevel": "low",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Lists every connected disk and partition including drives without letters that are hidden from Explorer.",
+      "beforeRunMessage": "SHLLSHOCKD will query the disk subsystem. No changes will be made.",
+      "afterRunMessage": "All connected drives are listed above. Drives without letters will not show up in Explorer until assigned one.",
+      "psFunction": "show-all-connected-disks"
+    },
+    {
+      "id": "disk.drive_letter",
+      "publicCommand": "Assign a drive letter to a drive that is not showing up",
+      "aliases": [
+        "Drive not showing in Explorer",
+        "Missing drive letter",
+        "Drive without letter",
+        "Assign letter to drive",
+        "Drive not visible",
+        "Make drive appear"
+      ],
+      "category": "File & Disk Operations",
+      "commandClass": "action",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Digital Moving Van",
+      "plainEnglishPurpose": "Assigns an available drive letter to a connected disk that is online but not visible in Explorer.",
+      "beforeRunMessage": "SHLLSHOCKD will show unlettered drives and ask which letter to assign. The drive will appear in Explorer immediately after.",
+      "afterRunMessage": "Drive letter assigned. The drive should now appear in Explorer and be accessible normally.",
+      "psFunction": "force-drive-letter"
+    },
+    {
+      "id": "symptom.laptop_hot",
+      "publicCommand": "Laptop is running hot",
+      "aliases": [
+        "Fan is spinning loud",
+        "CPU running hot",
+        "Computer overheating",
+        "PC getting hot",
+        "Why is fan on",
+        "Machine is burning up"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Diagnoses why your laptop is overheating by checking CPU load, background processes, and power settings.",
+      "beforeRunMessage": "SHLLSHOCKD will run three checks to find the heat source. Nothing will be changed in this sequence.",
+      "afterRunMessage": "Review the findings above. The highest CPU or background process is most likely the heat source.",
+      "psFunction": null,
+      "sequenceOf": [
+        "find-the-cpu-hog",
+        "stop-background-apps",
+        "switch-to-performance-mode"
+      ]
+    },
+    {
+      "id": "symptom.random_freezes",
+      "publicCommand": "Computer freezes randomly",
+      "aliases": [
+        "PC keeps freezing",
+        "Random crashes",
+        "Computer locks up",
+        "Unexpected freezes",
+        "System hangs randomly",
+        "Keeps crashing"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Investigates the most common causes of random freezes: failing RAM, a degrading drive, and recent error history.",
+      "beforeRunMessage": "SHLLSHOCKD will run three diagnostics. The RAM test requires a restart — you will be asked to confirm before that step.",
+      "afterRunMessage": "Review the results. A drive in Warning or Critical state or RAM errors found are the most actionable findings.",
+      "psFunction": null,
+      "sequenceOf": [
+        "check-my-ram",
+        "check-my-hard-drive",
+        "see-reliability-history"
+      ]
+    },
+    {
+      "id": "symptom.update_stuck",
+      "publicCommand": "Windows update is stuck",
+      "aliases": [
+        "Update not finishing",
+        "Update stuck at percent",
+        "Update hung",
+        "Update will not complete",
+        "Stuck downloading update",
+        "Update loop"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "medium",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Stops the stuck update and optionally removes it so you can start fresh.",
+      "beforeRunMessage": "SHLLSHOCKD will pause all updates immediately. You will be asked before the update is removed.",
+      "afterRunMessage": "Updates are paused. If you removed the update, restart your PC. Re-enable updates within 35 days.",
+      "psFunction": null,
+      "sequenceOf": [
+        "pause-updates-now",
+        "uninstall-latest-update"
+      ]
+    },
+    {
+      "id": "symptom.monitor_missing",
+      "publicCommand": "External monitor not detected",
+      "aliases": [
+        "Second screen not working",
+        "Monitor not showing up",
+        "HDMI not working",
+        "Display not detected",
+        "Screen not recognized",
+        "Dual monitor not working"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Resets the graphics driver and checks display settings to bring back a monitor Windows stopped detecting.",
+      "beforeRunMessage": "The screen will briefly go dark during the graphics driver reset. This is normal.",
+      "afterRunMessage": "If the monitor is still not detected after the reset, check the cable connection and try a different port.",
+      "psFunction": null,
+      "sequenceOf": [
+        "reset-graphics-driver",
+        "enable-hdr"
+      ]
+    },
+    {
+      "id": "symptom.bluetooth_wont_connect",
+      "publicCommand": "Bluetooth device will not connect",
+      "aliases": [
+        "Bluetooth not pairing",
+        "Headphones not connecting",
+        "Bluetooth speaker not found",
+        "Wireless device not working",
+        "Bluetooth keeps disconnecting",
+        "Can not pair Bluetooth"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "medium",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Make It Look Like Yours",
+      "plainEnglishPurpose": "Applies the known Windows fix for Bluetooth audio dropout and checks the Bluetooth service is running.",
+      "beforeRunMessage": "SHLLSHOCKD will apply the audio fix and check the Bluetooth service. A restart may be needed.",
+      "afterRunMessage": "If the device still will not pair, try removing it from Bluetooth settings and pairing fresh.",
+      "psFunction": null,
+      "sequenceOf": [
+        "fix-bluetooth-audio-stutter",
+        "see-all-running-services"
+      ]
+    },
+    {
+      "id": "symptom.slow_after_boot",
+      "publicCommand": "Computer is slow after startup",
+      "aliases": [
+        "Slow after boot",
+        "Takes forever to be usable",
+        "Sluggish after starting",
+        "PC slow in the morning",
+        "Startup takes too long",
+        "Slow to respond after turning on"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Runs the four most effective speed fixes in sequence: kills slow startup apps, stops background apps, frees RAM, and removes animations.",
+      "beforeRunMessage": "SHLLSHOCKD will show you what it plans to change before each step. You confirm each one.",
+      "afterRunMessage": "Restart your PC. The next boot should be noticeably faster.",
+      "psFunction": null,
+      "sequenceOf": [
+        "kill-startup-slowdown",
+        "stop-background-apps",
+        "free-up-ram-now",
+        "make-it-feel-instant"
+      ]
+    },
+    {
+      "id": "symptom.safe_to_delete",
+      "publicCommand": "What can I safely delete?",
+      "aliases": [
+        "How do I free up space",
+        "Safe files to delete",
+        "What should I clean up",
+        "What is OK to remove",
+        "Help me free up disk space",
+        "My storage is full"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Where Did All My Space Go?",
+      "plainEnglishPurpose": "Runs four discovery scans to find the safest and largest space savings before deleting anything.",
+      "beforeRunMessage": "SHLLSHOCKD will scan for disk usage, large files, duplicates, and Windows junk. Nothing is deleted in this sequence.",
+      "afterRunMessage": "Review the findings. The scans tell you what exists — you decide what to remove.",
+      "psFunction": null,
+      "sequenceOf": [
+        "who-stole-my-disk-space",
+        "find-the-giant-files",
+        "find-duplicate-files",
+        "kill-old-windows-junk"
+      ]
+    },
+    {
+      "id": "symptom.loud_fan",
+      "publicCommand": "Why is the fan running so loud?",
+      "aliases": [
+        "Fan noise",
+        "Loud fan",
+        "Fan keeps spinning",
+        "PC sounds like airplane",
+        "Constant fan noise",
+        "Cooling fan loud"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Identifies the process or app causing CPU/heat load that is making the fan run hard.",
+      "beforeRunMessage": "SHLLSHOCKD will check CPU and RAM load. No changes will be made.",
+      "afterRunMessage": "The process using the most CPU is most likely the cause. Closing it should reduce fan noise.",
+      "psFunction": null,
+      "sequenceOf": [
+        "find-the-cpu-hog",
+        "see-ram-hogs",
+        "stop-background-apps"
+      ]
+    },
+    {
+      "id": "symptom.deleted_file",
+      "publicCommand": "I accidentally deleted a file",
+      "aliases": [
+        "Deleted file by mistake",
+        "Restore deleted file",
+        "Recover lost file",
+        "File disappeared",
+        "Accidentally removed file",
+        "Need to recover file"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "high",
+      "requiresAdmin": true,
+      "requiresConfirmation": true,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "The Nuclear Options",
+      "plainEnglishPurpose": "Attempts to recover a deleted file by rolling Windows back to a restore point before the deletion.",
+      "beforeRunMessage": "System Restore will roll back Windows settings to an earlier point. Your personal files will be preserved, but installed apps may be affected.",
+      "afterRunMessage": "If restore completed, check for the file in its original location. If it is still missing, the file may not have been included in the restore point.",
+      "psFunction": null,
+      "sequenceOf": [
+        "go-back-to-restore-point"
+      ]
+    },
+    {
+      "id": "symptom.need_restart",
+      "publicCommand": "Do I need to restart?",
+      "aliases": [
+        "Should I restart",
+        "Will restarting help",
+        "Is a restart needed",
+        "Pending restart",
+        "Does this need a reboot",
+        "Should I reboot"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "Why Is This Thing So Slow?",
+      "plainEnglishPurpose": "Checks for pending restart flags and scheduled tasks that indicate whether a restart will help.",
+      "beforeRunMessage": "SHLLSHOCKD will check restart flags and scheduled tasks. No changes will be made.",
+      "afterRunMessage": "If a restart is pending, save your work and restart when ready. If not, the issue is likely not restart-related.",
+      "psFunction": null,
+      "sequenceOf": [
+        "see-what-slows-my-boot",
+        "show-scheduled-tasks"
+      ]
+    },
+    {
+      "id": "symptom.app_crashed",
+      "publicCommand": "Why did this app crash?",
+      "aliases": [
+        "App keeps crashing",
+        "What caused the crash",
+        "App crash reason",
+        "Program stopped working",
+        "App closed unexpectedly",
+        "Application keeps failing"
+      ],
+      "category": "Symptoms",
+      "commandClass": "symptom",
+      "riskLevel": "low",
+      "requiresAdmin": false,
+      "requiresConfirmation": false,
+      "modes": [
+        "standard",
+        "guided",
+        "expert"
+      ],
+      "bookChapter": "When Things Break",
+      "plainEnglishPurpose": "Reads crash history and recent error logs to identify the cause and suggests whether to repair or reinstall.",
+      "beforeRunMessage": "SHLLSHOCKD will check your reliability history and crash logs. No changes will be made in the first two steps.",
+      "afterRunMessage": "If the crash logs point to a specific file or driver, that is your starting point for the fix.",
+      "psFunction": null,
+      "sequenceOf": [
+        "see-reliability-history",
+        "see-crash-cause",
+        "fix-broken-app"
+      ]
+    }
+  ]
+}

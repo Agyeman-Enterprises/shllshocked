@@ -26,21 +26,26 @@ export default function CommandCard({ command, mode, isAdmin, isRunning, psReady
   }
 
   return (
-    <div className={`command-card${isRunning ? ' card-running' : ''}`}>
+    <div
+      className={`command-card${isRunning ? ' card-running' : ''}`}
+      role="article"
+      aria-label={`${command.publicCommand}${command.requiresAdmin ? ' (requires admin)' : ''}`}
+      tabIndex="0"
+    >
       <div className="card-header">
-        <div className="card-badges">
-          <span className={`risk-badge ${risk.className}`}>{risk.label}</span>
-          <span className={`class-badge ${cls.className}`}>{cls.label}</span>
+        <div className="card-badges" role="group" aria-label="Command metadata">
+          <span className={`risk-badge ${risk.className}`} role="img" aria-label={`Risk level: ${risk.label}`}>{risk.label}</span>
+          <span className={`class-badge ${cls.className}`} role="img" aria-label={`Type: ${cls.label}`}>{cls.label}</span>
           {command.requiresAdmin && (
-            <span className="admin-badge">ADMIN</span>
+            <span className="admin-badge" role="img" aria-label="Requires admin privileges">ADMIN</span>
           )}
         </div>
-        <span className="card-category">{command.category || ''}</span>
+        <span className="card-category" aria-label={`Category: ${command.category}`}>{command.category || ''}</span>
       </div>
 
       <div className="card-body">
-        <div className="card-command">{command.publicCommand}</div>
-        <div className="card-purpose">{command.plainEnglishPurpose}</div>
+        <div className="card-command" role="heading" aria-level="3">{command.publicCommand}</div>
+        <div className="card-purpose" role="doc-subtitle">{command.plainEnglishPurpose}</div>
 
         {/* Expert mode: show raw PS command with copy button */}
         {(mode === 'expert' || mode === 'developer') && command.psFunction && (
