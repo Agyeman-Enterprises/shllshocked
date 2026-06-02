@@ -33,9 +33,6 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: SHLLSHOCKD
-  installerIcon: assets/icon.png
-  uninstallerIcon: assets/icon.png
-  installerHeaderIcon: assets/icon.png
 
 portable:
   artifactName: SHLLSHOCKD-portable.exe
