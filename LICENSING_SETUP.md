@@ -1,138 +1,224 @@
-# SHLLSHOCKD Pro Licensing Setup
+# SHLLSHOCKD Pro Licensing Setup (AURORA)
 
-This guide walks you through setting up payments with Stripe and automatic license key generation.
+This guide walks you through setting up Stripe payments and automatic license key generation on AURORA (self-hosted PostgreSQL + Node.js webhook handler).
 
 ## Architecture
 
 ```
-Stripe (payment) → webhook → Supabase Edge Function → generates key → emails user
-User receives key via email → pastes into SHLLSHOCKD app → license validated locally
+Stripe (payment) → ae-stripe-router (/api/stripe/webhook)
+                 → AURORA PostgreSQL (shllshockd_licensing db)
+                 → generates license key
+                 → emails user
+
+User receives key → pastes into SHLLSHOCKD app → license validated locally (offline)
 ```
 
-## Step 1: Create Supabase Project
+**Via AE Platform sovereign stack. All self-hosted on AURORA.**
 
-1. Go to https://supabase.com
-2. Create a new project named `shllshockd-licensing`
-3. Copy your **Project URL** and **Service Role Key** (keep this secret!)
-4. Save to `.env.local`:
+---
+
+## Step 1: Set Up PostgreSQL Database on AURORA
+
+1. SSH into AURORA: `ssh root@5.9.153.215`
+2. Access PostgreSQL:
+   ```bash
+   psql -U postgres
    ```
-   SUPABASE_URL=https://xxx.supabase.co
-   SUPABASE_SERVICE_ROLE_KEY=eyJxx...
+3. Create database:
+   ```sql
+   CREATE DATABASE shllshockd_licensing;
+   \c shllshockd_licensing
+   ```
+4. Run migrations:
+   ```bash
+   # Download and run the SQL schema
+   psql -U postgres -d shllshockd_licensing -f scripts/init-aurora-db.sql
+   ```
+5. Verify:
+   ```sql
+   SELECT table_name FROM information_schema.tables WHERE table_schema = 'shllshockd';
+   -- Should show: licenses, webhook_logs
    ```
 
-## Step 2: Apply Database Schema
+---
 
-1. Go to Supabase Dashboard → SQL Editor
-2. Create a new query
-3. Paste the contents of `supabase/migrations/0001_init_licensing.sql`
-4. Run the query
+## Step 2: Register SHLLSHOCKD Webhook with ae-stripe-router
 
-This creates:
-- `licenses` table (email, license_key, purchased_at, order_id)
-- `webhook_logs` table (audit trail)
+The AE Platform's `ae-stripe-router` routes all Stripe webhooks through `/api/stripe/webhook`.
 
-## Step 3: Deploy Webhook Function
+Add SHLLSHOCKD handler to ae-stripe-router:
 
-```bash
-cd C:\dev\shllshocked-ui
+1. Open `AE-Platform/handlers/stripe.go`
+2. Add case for SHLLSHOCKD:
+   ```go
+   case "shllshockd":
+       handleShllshockdPayment(paymentIntent, metadata)
+   ```
 
-# Install Supabase CLI (one-time)
-npm install -g supabase
+3. Implement handler:
+   ```go
+   func handleShllshockdPayment(pi *stripe.PaymentIntent, metadata map[string]string) error {
+       // Extract email
+       email := pi.ReceiptEmail
+       if email == "" {
+           return errors.New("missing receipt email")
+       }
 
-# Login to Supabase
-supabase login
+       // Generate license key
+       timestamp := time.Now().UnixMilli()
+       licenseKey := generateLicenseKey(email, timestamp)
 
-# Link to your project
-supabase link --project-ref xxx
+       // Store in AURORA PostgreSQL
+       db := aurora.ConnectDB("shllshockd_licensing")
+       _, err := db.Exec(
+           "INSERT INTO shllshockd.licenses (email, license_key, purchased_at, stripe_payment_id) VALUES ($1, $2, $3, $4)",
+           email, licenseKey, timestamp, pi.ID,
+       )
+       if err != nil {
+           return err
+       }
 
-# Create environment file for the function
-echo "STRIPE_WEBHOOK_SECRET=whsec_..." > supabase/.env.local
-echo "LICENSE_SECRET=shllshockd-pro-secret-key-v1" >> supabase/.env.local
-echo "RESEND_API_KEY=<your-resend-key>" >> supabase/.env.local
+       // Send email
+       return sendLicenseEmail(email, licenseKey)
+   }
+   ```
 
-# Deploy the function
-supabase functions deploy webhook-stripe --no-verify
-```
+4. Test webhook by triggering a test payment in Stripe dashboard
+5. Verify in AURORA PostgreSQL:
+   ```sql
+   SELECT * FROM shllshockd.licenses ORDER BY created_at DESC LIMIT 1;
+   ```
 
-After deployment, copy the webhook URL (shown in output): `https://<project>.functions.supabase.co/webhook-stripe`
+---
 
-## Step 4: Set Up Stripe
+## Step 3: Set Up Stripe Webhook
 
 1. Go to https://dashboard.stripe.com
-2. Log in / sign up
-3. Create a **Product**:
-   - Name: "SHLLSHOCKD Pro"
-   - Type: Service (or product)
-   - Pricing: $49.00 USD (one-time)
-   - Save
+2. Create product: **SHLLSHOCKD Pro** ($49 USD, one-time)
+3. Create payment link (copy the URL)
+4. Go to **Developers → Webhooks**
+5. Add endpoint:
+   - URL: `https://platform.agyemanenterprises.com/api/stripe/webhook`
+   - Events: `payment_intent.succeeded`
+   - Copy the **Signing Secret** (`whsec_...`)
+6. Add secret to AE Platform env vars: `STRIPE_WEBHOOK_SECRET`
+7. Add to payment link metadata:
+   - `app: shllshockd` (routes to SHLLSHOCKD handler in ae-stripe-router)
 
-4. Get checkout link:
-   - Go to Products → SHLLSHOCKD Pro
-   - Click **Create payment link**
-   - One-time payment only
-   - Add metadata: `email` field (optional, helps with tracking)
-   - Copy the **Payment Link**
+---
 
-5. Configure webhook:
-   - Go to **Developers → Webhooks**
-   - Click **Add endpoint**
-   - URL: `https://<project>.functions.supabase.co/webhook-stripe`
-   - Events to send: Select **payment_intent.succeeded**
-   - Copy the **Signing Secret** (starts with `whsec_`)
-   - Add to Supabase env vars as `STRIPE_WEBHOOK_SECRET`
+## Step 4: Test the Flow
 
-## Step 5: Test the Flow
+1. Use Stripe test card: `4242 4242 4242 4242` (any future exp/CVC)
+2. Go through payment link
+3. Check webhook logs:
+   ```sql
+   SELECT * FROM shllshockd.webhook_logs ORDER BY created_at DESC LIMIT 5;
+   ```
+4. Check licenses table:
+   ```sql
+   SELECT email, license_key FROM shllshockd.licenses;
+   ```
+5. Check your email for the license key
+6. Open SHLLSHOCKD → License Settings → paste the key
 
-1. Use Stripe test mode:
-   - Go to **Developers → Test Data**
-   - Use test card: `4242 4242 4242 4242` (any future exp + any CVC)
-2. Make a test purchase via your payment link
-3. Check Supabase:
-   - `webhook_logs` table should have an entry with type `payment_intent.succeeded`
-   - `licenses` table should have your email + license key
-4. Check your email for the license key
-5. Open SHLLSHOCKD → License Settings → paste the key
+---
 
-## Environment Variables
+## Step 5: Update README
 
-Store these in Supabase (Settings → Secrets):
-- `STRIPE_WEBHOOK_SECRET` — from Stripe webhook signing secret
-- `LICENSE_SECRET` — same as electron/license.js (v1 key never changes)
-- `RESEND_API_KEY` — from https://resend.com (for sending license emails)
+Add payment link to README.md:
+
+```markdown
+## Upgrade to Pro ($49 one-time)
+
+[Buy SHLLSHOCKD Pro](https://buy.stripe.com/...)
+
+After purchase, you'll receive your license key via email.
+Paste it in **License Settings** to unlock community features.
+```
+
+---
+
+## Environment Variables (Webhook Handler)
+
+| Variable | Source | Example |
+|----------|--------|---------|
+| `DATABASE_URL` | PostgreSQL connection | `postgresql://shllshockd_webhook:pass@localhost:5432/shllshockd_licensing` |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook config | `whsec_test_...` |
+| `LICENSE_SECRET` | Same as electron/license.js | `shllshockd-pro-secret-key-v1` |
+| `RESEND_API_KEY` | https://resend.com | `re_...` |
+| `PORT` | Server port | `3001` |
+
+---
+
+## Monitoring
+
+### Check webhook logs (AURORA):
+```bash
+# SSH to AURORA
+ssh root@5.9.153.215
+psql -d shllshockd_licensing -c "SELECT event_type, status, created_at FROM shllshockd.webhook_logs ORDER BY created_at DESC LIMIT 20;"
+```
+
+### Check licenses table:
+```bash
+ssh root@5.9.153.215
+psql -d shllshockd_licensing -c "SELECT email, license_key, created_at FROM shllshockd.licenses ORDER BY created_at DESC LIMIT 10;"
+```
+
+### Check platform logs:
+```bash
+# On AURORA where ae-stripe-router runs
+docker logs ae-stripe-router 2>&1 | tail -100
+```
+
+---
 
 ## Troubleshooting
 
 | Problem | Solution |
 |---------|----------|
-| Webhook not firing | Check Stripe webhook logs (Developers → Webhooks → Endpoint) |
-| Email not sending | Check Resend API key, verify sender domain is verified |
-| License key invalid | Ensure `LICENSE_SECRET` matches in both Electron and Supabase |
-| Function deploy fails | Run `supabase functions deploy webhook-stripe --no-verify` |
-| Test payment appears but no webhook | Check webhook signing secret in Supabase env vars |
+| Webhook not firing | Check Stripe dashboard webhook logs; verify URL and secret |
+| Email not sending | Verify Resend API key; check that sender domain is verified |
+| Database connection failed | Verify DATABASE_URL and postgres is running on AURORA |
+| License key format invalid | Ensure LICENSE_SECRET matches exactly in both electron/license.js and webhook handler |
+| 500 error on webhook | Check application logs in Coolify or PM2 |
+
+---
 
 ## Production Checklist
 
-- [ ] Supabase project created and linked
-- [ ] Database migrations applied
-- [ ] Webhook function deployed (webhook-stripe)
-- [ ] Stripe account created
+- [ ] PostgreSQL database created on AURORA
+- [ ] Database migrations applied (init-aurora-db.sql)
+- [ ] Webhook handler deployed to Coolify or systemd
 - [ ] Stripe product created ($49 one-time)
 - [ ] Stripe payment link generated
-- [ ] Stripe webhook endpoint configured with correct secret
-- [ ] Resend API key configured for emails
-- [ ] Test purchase completed successfully
-- [ ] License key received and validated in app
+- [ ] Stripe webhook endpoint configured
+- [ ] All environment variables set in webhook handler
+- [ ] Test payment completed successfully
+- [ ] License key received via email
+- [ ] License key validates in SHLLSHOCKD app
 - [ ] README updated with payment link
-- [ ] Deploy new SHLLSHOCKD version with payment link in app
+- [ ] v1.1.0 tagged and released
 
-## Cost
+---
 
-- **Supabase**: Free tier covers webhook + storage (generous quota)
+## Cost Breakdown
+
+- **AURORA PostgreSQL**: Already running, no additional cost
+- **Webhook handler**: ~50MB RAM, ~0.1 CPU cores
 - **Stripe**: 2.9% + $0.30 per transaction
 - **Resend**: $0.20 per email (or free tier: 100/day)
+- **Total per $49 sale**: $47.08 (after Stripe) → $46.88 (after email)
 
-**For $49 sale:**
-- After Stripe fee: ~$47.08
-- After Resend email: ~$46.88
-- No recurring costs
+---
 
+## Next Steps
+
+1. Deploy webhook handler to AURORA
+2. Configure Stripe webhook
+3. Test end-to-end
+4. Update README with payment link
+5. Release v1.1.0
+6. Product Hunt launch
+7. Book integration (KDP)
