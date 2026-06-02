@@ -5,7 +5,22 @@ const { spawn } = require('child_process')
 
 const REGISTRY_PATH = 'C:\\dev\\shllshocked-ps\\registry.json'
 const PSM1_PATH    = 'C:\\dev\\shllshocked-ps\\SHLLSHOCKD.psm1'
+const SUBMISSIONS_PATH = path.join(app.getPath('userData'), 'submissions.json')
 const isDev        = process.env.NODE_ENV === 'development' || !app.isPackaged
+
+// Initialize submissions file if it doesn't exist
+function initSubmissionsFile() {
+  try {
+    if (!fs.existsSync(SUBMISSIONS_PATH)) {
+      const dir = path.dirname(SUBMISSIONS_PATH)
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+      fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify([], null, 2))
+      console.log(`[submissions] Created ${SUBMISSIONS_PATH}`)
+    }
+  } catch (err) {
+    console.error(`[submissions] Init error: ${err.message}`)
+  }
+}
 
 // ─── Persistent PowerShell session ───────────────────────────────────────────
 // One long-lived pwsh process loads the module once. Every click is just
@@ -125,6 +140,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  initSubmissionsFile()
   startPSSession()
   createWindow()
   app.on('activate', () => {
@@ -236,5 +252,147 @@ ipcMain.handle('run-command', async (event, { psFunction, requiresAdmin }) => {
     return await runInSession(psFunction)
   } catch (err) {
     return { stdout: '', stderr: err.message, success: false }
+  }
+})
+
+// ─── Submission Handlers ──────────────────────────────────────────────────────
+
+function loadSubmissions() {
+  try {
+    if (!fs.existsSync(SUBMISSIONS_PATH)) return []
+    const data = fs.readFileSync(SUBMISSIONS_PATH, 'utf-8')
+    return JSON.parse(data) || []
+  } catch (err) {
+    console.error(`[submissions] Load error: ${err.message}`)
+    return []
+  }
+}
+
+function saveSubmissions(submissions) {
+  try {
+    fs.writeFileSync(SUBMISSIONS_PATH, JSON.stringify(submissions, null, 2))
+    console.log(`[submissions] Saved ${submissions.length} submissions`)
+    return true
+  } catch (err) {
+    console.error(`[submissions] Save error: ${err.message}`)
+    return false
+  }
+}
+
+ipcMain.handle('load-submissions', async () => {
+  return loadSubmissions()
+})
+
+ipcMain.handle('save-submission', async (event, submission) => {
+  const submissions = loadSubmissions()
+  submissions.push(submission)
+  
+  // Keep only last 1000 submissions
+  if (submissions.length > 1000) {
+    submissions.splice(0, submissions.length - 1000)
+  }
+  
+  saveSubmissions(submissions)
+  return { success: true, submission }
+})
+
+ipcMain.handle('upvote-submission', async (event, submissionId) => {
+  const submissions = loadSubmissions()
+  const submission = submissions.find(s => s.id === submissionId)
+  
+  if (submission) {
+    submission.votes = (submission.votes || 0) + 1
+    
+    // Auto-approve at 10 votes (only if not already approved and not flagged)
+    if (submission.votes >= 10 && submission.status === 'pending' && !submission.flagged) {
+      submission.status = 'approved'
+      submission.approvedAt = new Date().toISOString()
+      console.log(`[submissions] Auto-approved "${submission.title}" (${submission.votes} votes)`)
+    }
+    
+    saveSubmissions(submissions)
+    return { success: true, submission }
+  }
+  
+  return { success: false, error: 'Submission not found' }
+})
+
+ipcMain.handle('flag-submission', async (event, submissionId) => {
+  const submissions = loadSubmissions()
+  const submission = submissions.find(s => s.id === submissionId)
+  
+  if (submission) {
+    submission.flagged = true
+    saveSubmissions(submissions)
+    return { success: true, submission }
+  }
+  
+  return { success: false, error: 'Submission not found' }
+})
+
+ipcMain.handle('approve-submission', async (event, submissionId) => {
+  const submissions = loadSubmissions()
+  const submission = submissions.find(s => s.id === submissionId)
+  
+  if (!submission) {
+    return { success: false, error: 'Submission not found' }
+  }
+  
+  // Check for duplicates in registry
+  try {
+    const registryData = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf-8'))
+    const registry = registryData.commands || []
+    
+    // Duplicate check: psFunction + aliases
+    const newFunc = submission.psFunction.toLowerCase().trim()
+    const newAliases = (submission.aliases || []).map(a => a.toLowerCase())
+    
+    for (const cmd of registry) {
+      if (cmd.psFunction?.toLowerCase() === newFunc) {
+        return { success: false, error: `Command "${newFunc}" already exists in registry` }
+      }
+      const existingAliases = (cmd.aliases || []).map(a => a.toLowerCase())
+      for (const alias of newAliases) {
+        if (existingAliases.includes(alias)) {
+          return { success: false, error: `Alias "${alias}" already exists in registry` }
+        }
+      }
+    }
+    
+    // Merge into registry
+    const commandToAdd = {
+      id: submission.id,
+      publicCommand: submission.title,
+      aliases: submission.aliases || [],
+      category: submission.category,
+      commandClass: 'action',
+      riskLevel: submission.riskLevel,
+      requiresAdmin: submission.requiresAdmin || false,
+      requiresConfirmation: submission.riskLevel === 'destructive' || submission.riskLevel === 'high',
+      modes: ['standard', 'guided', 'expert'],
+      bookChapter: 'Community Submissions',
+      plainEnglishPurpose: submission.description,
+      beforeRunMessage: submission.beforeRunMessage,
+      afterRunMessage: submission.afterRunMessage,
+      psFunction: submission.psFunction,
+      source: 'community',
+      submissionId: submission.id,
+    }
+    
+    registry.push(commandToAdd)
+    registryData.commands = registry
+    registryData.totalCommands = registry.length
+    
+    fs.writeFileSync(REGISTRY_PATH, JSON.stringify(registryData, null, 2))
+    console.log(`[submissions] Approved and merged "${submission.title}" into registry`)
+    
+    // Mark submission as approved
+    submission.status = 'approved'
+    submission.approvedAt = new Date().toISOString()
+    saveSubmissions(submissions)
+    
+    return { success: true, submission }
+  } catch (err) {
+    return { success: false, error: err.message }
   }
 })

@@ -889,3 +889,46 @@ html, body, #root {
   color: white !important;
 }
 .btn-confirm-destructive:hover { opacity: 0.85; }
+
+/* Tab controls and buttons */
+.tab-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tab-btn {
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid var(--border-active);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.tab-btn.submit-btn {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: rgb(147, 197, 253);
+}
+
+.tab-btn.submit-btn:hover {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: rgb(59, 130, 246);
+  color: rgb(191, 219, 254);
+}

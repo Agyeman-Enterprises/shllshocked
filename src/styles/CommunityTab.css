@@ -1,0 +1,360 @@
+.community-tab {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.community-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+}
+
+.community-header p {
+  margin: 0;
+  color: rgb(160, 160, 160);
+  font-size: 14px;
+}
+
+.community-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgb(59, 130, 246);
+}
+
+.stat-label {
+  color: rgb(160, 160, 160);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.community-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background: rgb(40, 40, 40);
+  border: 1px solid rgb(70, 70, 70);
+  border-radius: 6px;
+  color: rgb(180, 180, 180);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgb(100, 100, 100);
+  color: rgb(220, 220, 220);
+}
+
+.filter-btn.active {
+  background: rgb(59, 130, 246);
+  border-color: rgb(59, 130, 246);
+  color: white;
+}
+
+.community-loading {
+  text-align: center;
+  color: rgb(160, 160, 160);
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.community-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: rgb(160, 160, 160);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.community-empty h3 {
+  margin: 0 0 8px 0;
+  color: rgb(200, 200, 200);
+  font-size: 16px;
+}
+
+.community-empty p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.submissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.submission-card {
+  background: rgb(30, 30, 30);
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.submission-card:hover {
+  border-color: rgb(80, 80, 80);
+  background: rgb(35, 35, 35);
+}
+
+.submission-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.submission-title-area {
+  flex: 1;
+}
+
+.submission-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+}
+
+.submission-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge-risk {
+  background: rgba(168, 85, 247, 0.2);
+  color: rgb(219, 112, 147);
+}
+
+.badge-risk.badge-low {
+  background: rgba(34, 197, 94, 0.2);
+  color: rgb(134, 239, 172);
+}
+
+.badge-risk.badge-medium {
+  background: rgba(250, 204, 21, 0.2);
+  color: rgb(253, 230, 138);
+}
+
+.badge-risk.badge-high {
+  background: rgba(239, 68, 68, 0.2);
+  color: rgb(248, 114, 114);
+}
+
+.badge-risk.badge-destructive {
+  background: rgba(239, 68, 68, 0.3);
+  color: rgb(254, 82, 82);
+  font-weight: 600;
+}
+
+.badge-admin {
+  background: rgba(59, 130, 246, 0.2);
+  color: rgb(147, 197, 253);
+}
+
+.badge-status {
+  background: rgba(156, 163, 175, 0.2);
+  color: rgb(209, 213, 219);
+}
+
+.badge-status.badge-pending {
+  background: rgba(234, 179, 8, 0.2);
+  color: rgb(253, 224, 71);
+}
+
+.badge-status.badge-approved {
+  background: rgba(34, 197, 94, 0.2);
+  color: rgb(134, 239, 172);
+}
+
+.badge-flagged {
+  background: rgba(239, 68, 68, 0.2);
+  color: rgb(248, 114, 114);
+  font-weight: 600;
+}
+
+.submission-votes {
+  display: flex;
+  gap: 8px;
+}
+
+.vote-btn {
+  padding: 8px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 6px;
+  color: rgb(147, 197, 253);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.vote-btn:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: rgb(191, 219, 254);
+}
+
+.vote-btn.voted,
+.vote-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submission-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: rgb(140, 140, 140);
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.submission-description {
+  margin: 0 0 12px 0;
+  color: rgb(200, 200, 200);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.submission-messages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .submission-messages {
+    grid-template-columns: 1fr;
+  }
+}
+
+.message-box {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 12px;
+  color: rgb(160, 160, 160);
+}
+
+.message-box strong {
+  color: rgb(200, 200, 200);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.submission-aliases {
+  margin-bottom: 12px;
+  padding: 10px;
+  background: rgba(156, 163, 175, 0.05);
+  border-radius: 6px;
+  font-size: 12px;
+  color: rgb(160, 160, 160);
+}
+
+.submission-aliases strong {
+  color: rgb(200, 200, 200);
+  margin-right: 8px;
+}
+
+.submission-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid rgb(50, 50, 50);
+}
+
+.auto-approve-hint {
+  font-size: 12px;
+  color: rgb(34, 197, 94);
+  margin-right: auto;
+  font-weight: 500;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  color: rgb(160, 160, 160);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  border-color: rgba(156, 163, 175, 0.6);
+  color: rgb(220, 220, 220);
+}
+
+.action-approve {
+  border-color: rgba(34, 197, 94, 0.5);
+  color: rgb(134, 239, 172);
+}
+
+.action-approve:hover {
+  border-color: rgba(34, 197, 94, 0.8);
+  color: rgb(187, 247, 208);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.action-flag {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: rgb(248, 114, 114);
+}
+
+.action-flag:hover {
+  border-color: rgba(239, 68, 68, 0.8);
+  color: rgb(254, 128, 128);
+  background: rgba(239, 68, 68, 0.1);
+}

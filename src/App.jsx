@@ -5,6 +5,8 @@ import CommandCard from './components/CommandCard.jsx'
 import ConfirmModal from './components/ConfirmModal.jsx'
 import OutputPanel from './components/OutputPanel.jsx'
 import ModeBar from './components/ModeBar.jsx'
+import SubmissionModal from './components/SubmissionModal.jsx'
+import CommunityTab from './components/CommunityTab.jsx'
 
 // Maps sidebar display label → exact registry category name
 const CATEGORY_MAP = {
@@ -43,6 +45,8 @@ export default function App() {
   const [isRunning, setIsRunning] = useState(false)
   const [mode, setMode] = useState('standard')
   const [psReady, setPsReady] = useState(false)
+  const [showSubmissionModal, setShowSubmissionModal] = useState(false)
+  const [activeTab, setActiveTab] = useState('commands')
 
   // Load registry, watch for PS session ready
   useEffect(() => {
@@ -234,61 +238,96 @@ export default function App() {
 
         {/* Main Content */}
         <div className="main-content">
-          {/* Top bar: search + mode switcher */}
+          {/* Top bar: search + mode switcher + community button */}
           <div className="top-bar">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              resultCount={filteredCommands.length}
-            />
-            <ModeBar mode={mode} onChange={setMode} />
+            {activeTab === 'commands' && (
+              <>
+                <SearchBar
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  resultCount={filteredCommands.length}
+                />
+                <ModeBar mode={mode} onChange={setMode} />
+              </>
+            )}
+            <div className="tab-controls" style={{ marginLeft: 'auto', display: 'flex', gap: '8px', paddingRight: '16px' }}>
+              <button
+                className={`tab-btn ${activeTab === 'commands' ? 'active' : ''}`}
+                onClick={() => setActiveTab('commands')}
+              >
+                🔍 Commands
+              </button>
+              <button
+                className={`tab-btn ${activeTab === 'community' ? 'active' : ''}`}
+                onClick={() => setActiveTab('community')}
+              >
+                👥 Community
+              </button>
+              <button
+                className="tab-btn submit-btn"
+                onClick={() => setShowSubmissionModal(true)}
+                title="Submit a command you wish existed"
+              >
+                ➕ Submit
+              </button>
+            </div>
           </div>
 
-          {/* Registry error */}
-          {registryError && (
-            <div className="registry-error">
-              <span className="error-icon">!</span>
-              <span>
-                registry.json not loaded: {registryError}. Place registry.json at C:\dev\SHLLSHOCKD\registry.json
-              </span>
-            </div>
+          {/* Commands Tab */}
+          {activeTab === 'commands' && (
+            <>
+              {/* Registry error */}
+              {registryError && (
+                <div className="registry-error">
+                  <span className="error-icon">!</span>
+                  <span>
+                    registry.json not loaded: {registryError}. Place registry.json at C:\dev\shllshocked-ps\registry.json
+                  </span>
+                </div>
+              )}
+
+              {/* Commands grid */}
+              <div className="commands-grid">
+                {filteredCommands.length === 0 && !registryError && (
+                  <div className="empty-state">
+                    {commands.length === 0
+                      ? 'No commands loaded. Check registry.json path.'
+                      : 'No commands match your search.'}
+                  </div>
+                )}
+                {!psReady && commands.length > 0 && (
+                  <div className="ps-loading">
+                    <span className="ps-dot" />
+                    Loading Windows session... commands will be ready in a moment.
+                  </div>
+                )}
+                {filteredCommands.map((cmd, i) => (
+                  <CommandCard
+                    key={cmd.id || cmd.psFunction || i}
+                    command={cmd}
+                    mode={mode}
+                    isAdmin={isAdmin}
+                    psReady={psReady}
+                    isRunning={isRunning && selectedCommand?.psFunction === cmd.psFunction}
+                    onRun={handleRunRequest}
+                  />
+                ))}
+              </div>
+
+              {/* Output Panel */}
+              <OutputPanel
+                log={outputLog}
+                isRunning={isRunning}
+                onClear={() => setOutputLog(null)}
+                onAction={handleActionSuggestion}
+              />
+            </>
           )}
 
-          {/* Commands grid */}
-          <div className="commands-grid">
-            {filteredCommands.length === 0 && !registryError && (
-              <div className="empty-state">
-                {commands.length === 0
-                  ? 'No commands loaded. Check registry.json path.'
-                  : 'No commands match your search.'}
-              </div>
-            )}
-            {!psReady && commands.length > 0 && (
-              <div className="ps-loading">
-                <span className="ps-dot" />
-                Loading Windows session... commands will be ready in a moment.
-              </div>
-            )}
-            {filteredCommands.map((cmd, i) => (
-              <CommandCard
-                key={cmd.id || cmd.psFunction || i}
-                command={cmd}
-                mode={mode}
-                isAdmin={isAdmin}
-                psReady={psReady}
-                isRunning={isRunning && selectedCommand?.psFunction === cmd.psFunction}
-                onRun={handleRunRequest}
-              />
-            ))}
-          </div>
-
-          {/* Output Panel */}
-          <OutputPanel
-            log={outputLog}
-            isRunning={isRunning}
-            onClear={() => setOutputLog(null)}
-            onAction={handleActionSuggestion}
-          />
+          {/* Community Tab */}
+          {activeTab === 'community' && (
+            <CommunityTab isActive={activeTab === 'community'} />
+          )}
         </div>
       </div>
 
@@ -300,6 +339,14 @@ export default function App() {
           onCancel={handleCancel}
         />
       )}
+
+      {/* Submission Modal */}
+      <SubmissionModal
+        isOpen={showSubmissionModal}
+        onClose={() => setShowSubmissionModal(false)}
+        categories={Object.values(CATEGORY_MAP).filter((v, i, a) => a.indexOf(v) === i && v !== 'All').sort()}
+        existingCommands={commands}
+      />
     </div>
   )
 }
