@@ -69,6 +69,14 @@ Most users pay. Some don't. That's okay. We built this for people who care about
 
 ---
 
+## Upgrade to Pro
+
+**[Coming soon — LemonSqueezy integration]**
+
+Setup instructions: See [LICENSING_SETUP.md](LICENSING_SETUP.md) for how to deploy the webhook and connect LemonSqueezy.
+
+---
+
 ## Architecture
 
 **Frontend:**
