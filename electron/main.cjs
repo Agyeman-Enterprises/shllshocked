@@ -3,8 +3,8 @@ const path = require('path')
 const fs = require('fs')
 const { spawn } = require('child_process')
 
-const REGISTRY_PATH = 'C:\\dev\\SHLLSHOCKD\\registry.json'
-const PSM1_PATH    = 'C:\\dev\\SHLLSHOCKD\\SHLLSHOCKD.psm1'
+const REGISTRY_PATH = 'C:\\dev\\shllshocked-ps\\registry.json'
+const PSM1_PATH    = 'C:\\dev\\shllshocked-ps\\SHLLSHOCKD.psm1'
 const isDev        = process.env.NODE_ENV === 'development' || !app.isPackaged
 
 // ─── Persistent PowerShell session ───────────────────────────────────────────
