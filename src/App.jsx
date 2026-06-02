@@ -7,6 +7,9 @@ import OutputPanel from './components/OutputPanel.jsx'
 import ModeBar from './components/ModeBar.jsx'
 import SubmissionModal from './components/SubmissionModal.jsx'
 import CommunityTab from './components/CommunityTab.jsx'
+import PricingModal from './components/PricingModal.jsx'
+import LicenseSettings from './components/LicenseSettings.jsx'
+import ProGate from './components/ProGate.jsx'
 
 // Maps sidebar display label → exact registry category name
 const CATEGORY_MAP = {
@@ -47,6 +50,9 @@ export default function App() {
   const [psReady, setPsReady] = useState(false)
   const [showSubmissionModal, setShowSubmissionModal] = useState(false)
   const [activeTab, setActiveTab] = useState('commands')
+  const [licenseStatus, setLicenseStatus] = useState({ status: 'unlicensed', pro: false })
+  const [showPricingModal, setShowPricingModal] = useState(false)
+  const [showLicenseSettings, setShowLicenseSettings] = useState(false)
 
   // Load registry, watch for PS session ready
   useEffect(() => {
@@ -65,6 +71,10 @@ export default function App() {
 
         const admin = await window.shllshockd.checkAdmin()
         setIsAdmin(admin)
+
+        // Check license status
+        const license = await window.shllshockd.getLicenseStatus()
+        setLicenseStatus(license)
       } else {
         // Browser dev mode: load registry.json from public folder
         try {
@@ -210,6 +220,28 @@ export default function App() {
     }
   }, [commands, handleRunRequest])
 
+  const handlePurchase = (details) => {
+    // In real implementation, redirect to Stripe or LemonSqueezy checkout
+    // For now, show a success message with a test license key
+    if (window.shllshockd?.generateLicenseKey) {
+      window.shllshockd.generateLicenseKey(details.email).then((result) => {
+        if (result.key) {
+          alert(`Test license key generated:\n\n${result.key}\n\nUse this in License Settings to activate.`)
+          setShowPricingModal(false)
+          setShowLicenseSettings(true)
+        }
+      })
+    }
+  }
+
+  const handleActivateLicense = async (licenseKey, email) => {
+    return await window.shllshockd?.activateLicense(licenseKey, email)
+  }
+
+  const handleDeactivateLicense = async () => {
+    return await window.shllshockd?.deactivateLicense()
+  }
+
   return (
     <div className="app-shell">
       {/* Custom Titlebar */}
@@ -218,6 +250,17 @@ export default function App() {
         <span className="titlebar-sub">Windows commands for people who have work to do</span>
         <div className="titlebar-controls" style={{ WebkitAppRegion: 'no-drag' }}>
           {isAdmin && <span className="admin-indicator">ADMIN</span>}
+          {licenseStatus.pro && <span className="pro-indicator">PRO</span>}
+          {!licenseStatus.pro && (
+            <button className="tb-btn upgrade-btn" onClick={() => setShowPricingModal(true)} title="Upgrade to Pro">
+              ⭐ Pro
+            </button>
+          )}
+          {licenseStatus.pro && (
+            <button className="tb-btn license-btn" onClick={() => setShowLicenseSettings(true)} title="License settings">
+              🔓
+            </button>
+          )}
           <button className="tb-btn" onClick={() => window.shllshockd?.minimize()}>&#8722;</button>
           <button className="tb-btn" onClick={() => window.shllshockd?.maximize()}>&#9633;</button>
           <button className="tb-btn tb-close" onClick={() => window.shllshockd?.close()}>&#10005;</button>
@@ -326,7 +369,13 @@ export default function App() {
 
           {/* Community Tab */}
           {activeTab === 'community' && (
-            <CommunityTab isActive={activeTab === 'community'} />
+            <ProGate
+              isPro={licenseStatus.pro}
+              onUpgradeClick={() => setShowPricingModal(true)}
+              featureName="Community voting and submissions"
+            >
+              <CommunityTab isActive={activeTab === 'community'} />
+            </ProGate>
           )}
         </div>
       </div>
@@ -346,6 +395,22 @@ export default function App() {
         onClose={() => setShowSubmissionModal(false)}
         categories={Object.values(CATEGORY_MAP).filter((v, i, a) => a.indexOf(v) === i && v !== 'All').sort()}
         existingCommands={commands}
+      />
+
+      {/* Pricing Modal */}
+      <PricingModal
+        isOpen={showPricingModal}
+        onClose={() => setShowPricingModal(false)}
+        onPurchase={handlePurchase}
+      />
+
+      {/* License Settings */}
+      <LicenseSettings
+        isOpen={showLicenseSettings}
+        onClose={() => setShowLicenseSettings(false)}
+        licenseStatus={licenseStatus}
+        onActivate={handleActivateLicense}
+        onDeactivate={handleDeactivateLicense}
       />
     </div>
   )
