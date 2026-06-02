@@ -396,3 +396,36 @@ ipcMain.handle('approve-submission', async (event, submissionId) => {
     return { success: false, error: err.message }
   }
 })
+
+// ─── License Handlers ─────────────────────────────────────────────────────────
+
+const licenseModule = require('./license.js')
+
+app.whenReady().then(() => {
+  licenseModule.setUserDataPath(app.getPath('userData'))
+  licenseModule.initLicenseFile()
+})
+
+ipcMain.handle('get-license-status', async () => {
+  return licenseModule.getLicenseStatus()
+})
+
+ipcMain.handle('validate-license', async (event, { licenseKey, email }) => {
+  return licenseModule.validateLicenseKey(licenseKey, email)
+})
+
+ipcMain.handle('activate-license', async (event, { licenseKey, email }) => {
+  return licenseModule.activateLicense(licenseKey, email)
+})
+
+ipcMain.handle('deactivate-license', async () => {
+  return licenseModule.deactivateLicense()
+})
+
+ipcMain.handle('generate-license-key', async (event, email) => {
+  // Only allow generation in dev mode or if admin-protected
+  if (isDev) {
+    return { key: licenseModule.generateLicenseKey(email) }
+  }
+  return { error: 'License generation not allowed in production' }
+})

@@ -1,0 +1,270 @@
+.license-settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  backdrop-filter: blur(4px);
+}
+
+.license-settings {
+  background: rgb(20, 20, 20);
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.license-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+.license-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+}
+
+.license-close {
+  background: none;
+  border: none;
+  color: rgb(160, 160, 160);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.license-close:hover {
+  color: rgb(240, 240, 240);
+}
+
+.license-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.license-status-active,
+.license-status-inactive {
+  text-align: center;
+}
+
+.license-status-active {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  background: rgb(34, 197, 94);
+  color: rgb(20, 20, 20);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.license-status-active h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+}
+
+.license-status-active p {
+  margin: 0;
+  color: rgb(160, 160, 160);
+  font-size: 13px;
+}
+
+.license-status-inactive {
+  background: rgba(156, 163, 175, 0.05);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  color: rgb(160, 160, 160);
+  font-size: 14px;
+}
+
+.license-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.license-form h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+}
+
+.form-hint {
+  margin: 0;
+  color: rgb(160, 160, 160);
+  font-size: 13px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(200, 200, 200);
+}
+
+.form-group input {
+  background: rgb(35, 35, 35);
+  border: 1px solid rgb(70, 70, 70);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: rgb(240, 240, 240);
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: rgb(59, 130, 246);
+  background: rgb(40, 40, 40);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.license-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgb(239, 68, 68);
+  border-radius: 6px;
+  padding: 12px;
+  color: rgb(248, 114, 114);
+  font-size: 13px;
+  animation: shake 0.4s ease-in-out;
+}
+
+.license-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgb(34, 197, 94);
+  border-radius: 6px;
+  padding: 12px;
+  color: rgb(134, 239, 172);
+  font-size: 13px;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.btn-activate {
+  padding: 10px 20px;
+  background: rgb(59, 130, 246);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-activate:hover:not(:disabled) {
+  background: rgb(37, 99, 235);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.btn-activate:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-deactivate {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid rgb(239, 68, 68);
+  border-radius: 6px;
+  color: rgb(248, 114, 114);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-deactivate:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgb(254, 82, 82);
+  color: rgb(254, 128, 128);
+}
+
+.btn-deactivate:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.license-footer {
+  padding-top: 12px;
+  border-top: 1px solid rgb(50, 50, 50);
+  text-align: center;
+  font-size: 13px;
+  color: rgb(160, 160, 160);
+}
+
+.license-footer a {
+  color: rgb(59, 130, 246);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.license-footer a:hover {
+  color: rgb(147, 197, 253);
+  text-decoration: underline;
+}

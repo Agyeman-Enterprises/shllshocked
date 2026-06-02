@@ -1,0 +1,79 @@
+.pro-gate-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.pro-gate-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.pro-gate-content {
+  background: rgb(20, 20, 20);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  max-width: 300px;
+  cursor: default;
+  animation: slideInScale 0.3s ease-out;
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pro-gate-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.pro-gate-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(59, 130, 246);
+}
+
+.pro-gate-content p {
+  margin: 0 0 20px 0;
+  color: rgb(160, 160, 160);
+  font-size: 14px;
+}
+
+.pro-gate-btn {
+  background: rgb(59, 130, 246);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pro-gate-btn:hover {
+  background: rgb(37, 99, 235);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.pro-gate-btn:active {
+  transform: scale(0.98);
+}
