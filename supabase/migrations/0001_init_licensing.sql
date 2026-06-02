@@ -5,7 +5,7 @@ CREATE TABLE licenses (
   email TEXT UNIQUE NOT NULL,
   license_key TEXT UNIQUE NOT NULL,
   purchased_at BIGINT NOT NULL,
-  lemonsqueezy_order_id TEXT UNIQUE,
+  stripe_payment_id TEXT UNIQUE,
   created_at TIMESTAMP DEFAULT now(),
   updated_at TIMESTAMP DEFAULT now()
 );
