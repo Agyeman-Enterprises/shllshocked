@@ -8,7 +8,8 @@
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "vite build",
     "dist": "vite build && electron-builder",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Agyeman Enterprises",
@@ -25,9 +26,20 @@
     "tailwindcss": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
     "vite": "^5.4.19",
-    "wait-on": "^8.0.3"
+    "wait-on": "^8.0.3",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0"
   },
   "build": {
     "extends": "./electron-builder.yml"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "package.json": [
+      "npm audit --audit-level=high"
+    ]
   }
 }
