@@ -19,7 +19,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^6.0.2",
     "concurrently": "^9.1.2",
     "electron": "^28.3.3",
     "electron-builder": "^25.1.8",
